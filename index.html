@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./movie.js">
-
-        
-    </script>
+    <script src="./movie.js"></script>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/movie.css">
     <title>Movie</title>
 </head>
 <body>
-    <p>영화</p>
+    <h2>영화 검색 사이트</h2>
+    <div class="searchDiv">
+        <label for="searchId">영화 검색 :</label>
+        <input type="text" id="searchId" placeholder="제목을입력하세요" /> 
+        <button onclick=movieSearch()>검색</button>
+    </div>
+    <section id="movieList">
+
+    </section>
 </body>
 </html>
