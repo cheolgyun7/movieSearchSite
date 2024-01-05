@@ -12,7 +12,7 @@
     <h2>영화 검색 사이트</h2>
     <div class="searchDiv">
         <label for="searchId">영화 검색 :</label>
-        <input type="text" id="searchId" placeholder="제목을입력하세요" /> 
+        <input type="text" onkeyup=enterKey() id="searchId" placeholder="제목을입력하세요" /> 
         <button onclick=movieSearch()>검색</button>
     </div>
     <section id="movieList">

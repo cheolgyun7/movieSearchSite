@@ -8,6 +8,12 @@ const options = {
   }
 };
 
+function enterKey() { //input에서 검색결과를 나타내고 엔터시 검색이되도록하는 함수
+  if (window.event.keyCode == 13) {
+    movieSearch();
+  }
+}
+
 function displayMovies(response){ //response라는 매개변수를 받음
   const movieList = document.getElementById('movieList');
   response.results.forEach(list => { // 존재하는 데이터를 리스트로 보여줌
@@ -56,4 +62,20 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
       })
       .catch(err => console.error(err));
   }
+
+  fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+  .then(response => response.json())
+  .then(response => {
+    console.log(response)
+    const movie = document.getElementById('movieList');
+    response.results.forEach(list => { // 존재하는 데이터를 리스트로 보여줌
+      const divList = document.createElement('div'); // 데이터하나하나를 li태그로 감싸준다
+      divList.classList.add("listUp"); // li에 class명을 넣음
+      divList.textContent = list.title; // li에 li.title을 넣어준다
+      movie.appendChild(divList); // section 태그에 id값 movieList로 가지고 있는곳에 복붙으로 넣어줘야함
+
+    })
+    console.log(response.results);
+  })
+  .catch(err => console.error(err));
 
