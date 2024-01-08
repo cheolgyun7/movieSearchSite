@@ -20,11 +20,21 @@ h2{
 }
 .imgClass{
     width: 300px;
+    border-radius: 30px;
 }
 #movieList{
     display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: aquamarine; */
 }
 .listUp{
-    margin: 0 10px;
+    position: relative;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
     cursor: pointer;
+    background-color: rgb(248, 239, 255);
+    border-radius: 30px;
 }
