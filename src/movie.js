@@ -14,7 +14,7 @@ export const movieCards = async () => {
   `
     )
     .join("");
-
+  //
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard({ target }) {
