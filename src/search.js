@@ -15,7 +15,7 @@ export const handleSearch = (searchKeyword) => {
     }
   });
 
-  /** result관련한거지우셔도됩니다 */
+  /** result 관련한거지우셔도됩니다 */
   if (noResult) {
     noResult.style.display = resultFound ? "none" : "block";
   } else if (!noResult) {
