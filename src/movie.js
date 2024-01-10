@@ -5,10 +5,10 @@ export const movieCards = async () => {
   movieList.innerHTML = movies
     .map(
       (movie) => `
-  <li class="movie-card">
-  <div  id=${movie.id}>
+  <li class="movie-card" id=${movie.id}>
+  
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
-  <h2 class="movieTitle">${movie.title}</h2>
+  <h3 class="movieTitle">${movie.title}</h3>
 
     <div class="text-wrapper">
     <span class="text">${movie.overview}</span>
@@ -18,7 +18,7 @@ export const movieCards = async () => {
   <br>
   <p>Release Date : ${movie.release_date}</p>
   <p class="movieGrade">Rating : ${movie.vote_average}</p>
-  </div>
+  
   <div class="movePageBtn">
   <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
   </div>
@@ -52,12 +52,15 @@ export const movieCards = async () => {
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard({ target }) {
-    if (target === movieList) return;
+    // if (target === movieList) return;
     // if (target === $(".linkBtn")) return;
 
-    if (target.matches(".movie-card")) {
-      alert(`영화 id : ${target.id}`);
-    } else {
+    // if (target.matches(".movie-card")) {
+    //   alert(`영화 id : ${target.id}`);
+    // } else {
+    //   alert(`영화 id : ${target.parentNode.id}`);
+    // }
+    if (target.matches(".imgClass")) {
       alert(`영화 id : ${target.parentNode.id}`);
     }
   }
