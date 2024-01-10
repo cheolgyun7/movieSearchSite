@@ -1,4 +1,4 @@
-h2 {
+header {
   text-align: center;
   padding: 30px 0;
   background-color: rgb(211, 157, 255);
@@ -18,10 +18,7 @@ h2 {
 .searchDiv label {
   line-height: 30px;
 }
-.imgClass {
-  width: 300px;
-  border-radius: 30px;
-}
+
 #movieList {
   display: flex;
   justify-content: space-around;
@@ -29,6 +26,35 @@ h2 {
   width: 100%;
   /* background-color: aquamarine; */
 }
+.imgClass {
+  width: 100%;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.text-wrapper {
+  width: 100%;
+}
+
+.text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-align: justify;
+}
+
+.more-text {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.less-text {
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+}
+
 .movie-card {
   position: relative;
   width: 300px;
@@ -37,4 +63,12 @@ h2 {
   cursor: pointer;
   background-color: rgb(248, 239, 255);
   border-radius: 30px;
+}
+
+.movePageBtn {
+  width: 150px;
+
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
 }
