@@ -1,14 +1,14 @@
 export const movieCards = async () => {
   const movies = await fetchMovieData();
-  console.log(movies);
+
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
     .map(
       (movie) => `
-  <li class="movie-card">
-  <div  id=${movie.id}>
+  <li class="movie-card" id=${movie.id}>
+  
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
-  <h2 class="movieTitle">${movie.title}</h2>
+  <h3 class="movieTitle">${movie.title}</h3>
 
     <div class="text-wrapper">
     <span class="text">${movie.overview}</span>
@@ -18,7 +18,7 @@ export const movieCards = async () => {
   <br>
   <p>Release Date : ${movie.release_date}</p>
   <p class="movieGrade">Rating : ${movie.vote_average}</p>
-  </div>
+  
   <div class="movePageBtn">
   <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
   </div>
@@ -27,7 +27,7 @@ export const movieCards = async () => {
     )
     .join("");
 
-  // 영화 줄거리 더보기/ 줄이기
+  /* 영화 줄거리 더보기/ 줄이기 */
   // 코드에 필요한 요소 변수 시장
   const textWapper = document.querySelector(".text-wrapper");
   const text = document.querySelector(".text");
@@ -48,16 +48,19 @@ export const movieCards = async () => {
     text.style.display = "-webkit-box";
   });
 
-  // 카드 클릭 했을 때 id alert 뜨기
+  /* 카드 클릭 했을 때 id alert 뜨기 */
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard({ target }) {
-    if (target === movieList) return;
+    // if (target === movieList) return;
     // if (target === $(".linkBtn")) return;
 
-    if (target.matches(".movie-card")) {
-      alert(`영화 id : ${target.id}`);
-    } else {
+    // if (target.matches(".movie-card")) {
+    //   alert(`영화 id : ${target.id}`);
+    // } else {
+    //   alert(`영화 id : ${target.parentNode.id}`);
+    // }
+    if (target.matches(".imgClass")) {
       alert(`영화 id : ${target.parentNode.id}`);
     }
   }
