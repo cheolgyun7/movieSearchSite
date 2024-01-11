@@ -1,6 +1,6 @@
 export const movieCards = async () => {
   const movies = await fetchMovieData();
-  console.log(movies);
+
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
     .map(
@@ -27,7 +27,7 @@ export const movieCards = async () => {
     )
     .join("");
 
-  // 영화 줄거리 더보기/ 줄이기
+  /* 영화 줄거리 더보기/ 줄이기 */
   // 코드에 필요한 요소 변수 시장
   const textWapper = document.querySelector(".text-wrapper");
   const text = document.querySelector(".text");
@@ -48,7 +48,7 @@ export const movieCards = async () => {
     text.style.display = "-webkit-box";
   });
 
-  // 카드 클릭 했을 때 id alert 뜨기
+  /* 카드 클릭 했을 때 id alert 뜨기 */
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard({ target }) {

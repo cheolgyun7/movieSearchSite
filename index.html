@@ -21,7 +21,13 @@
     <form id="search-form">
       <div class="searchDiv">
         <label for="searchId">영화 검색 :</label>
-        <input type="text" id="searchId" placeholder="제목을 입력하세요." />
+        <input
+          type="text"
+          id="searchId"
+          placeholder="제목을 입력하세요."
+          oninvalid="alert('제목을 입력해 주세요.');"
+          required
+        />
         <button type="submit">검색</button>
       </div>
     </form>
