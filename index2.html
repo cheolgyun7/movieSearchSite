@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/detailPage.css" />
+  </head>
+  <body>
+    <!--상세 페이지를 하나로 묶어서 가로로 flex하기 위한 container box-->
+    <!--first는 상세 페이지 왼쪽부분이고 second는 오른쪽 부분입니다!-->
+    <div class="container">
+      <!--좌측 페이지(first) : 포스터 이미지가 놓일 빈공간-->
+      <div class="first"></div>
+      <!--TMDB api를 통해 영화 포스터 이미지 가져와서 적용할 부분인데 위치확인하려고 일반 사진 넣어놓았습니다 어떤게 들어가는건지 위치만 참고해주세요!-->
+      <img src="movie.jpg" alt="My Image" />
+
+      <!--우측 페이지(second) : 영화 제목, 줄거리, 리뷰 작성칸, 리뷰-->
+      <div class="second">
+        <!--영화 제목, 줄거리 api 받아올 공간인데 대충 어떤 식으로 들어갈건지 예시로 해놓은 부분이여서 싹 변경 예정-->
+        <div class="content"></div>
+        <!--리뷰 작성칸, 리뷰창 공간으로 여기부터 작성해주시면 되지 않을까 싶어요! 근데 막 구성해놓은거라 이상하면 꼭 말씀해주세요ㅠㅠ-->
+        <div class="review"></div>
+      </div>
+    </div>
+  </body>
+</html>
