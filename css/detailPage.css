@@ -9,6 +9,11 @@
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
+  background-color: gray;
+
+  border: 2px solid rgb(72, 94, 72);
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px gray;
 }
 
 .second {
@@ -16,14 +21,5 @@
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
-}
-
-img {
-  border: 2px solid rgb(72, 94, 72);
-  border-radius: 10px;
-  width: 24%;
-  box-shadow: 0px 5px 15px gray;
-
-  position: fixed;
-  margin: 100px auto 100px 200px;
+  background-color: gray;
 }
