@@ -1,4 +1,4 @@
-function detailPageOn() {
+window.onload = function detailPageOn() {
   const options = {
     method: "GET",
     headers: {
@@ -45,4 +45,4 @@ function detailPageOn() {
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
       document.querySelector("#secondPage").insertAdjacentHTML("beforeend", temp_html2);
     });
-}
+};
