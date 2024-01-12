@@ -28,11 +28,13 @@ export const movieCards = async () => {
     .join("");
 
   /* 영화 줄거리 더보기/ 줄이기 */
+
   // 코드에 필요한 요소 변수 시장
+
   const textWapper = document.querySelector(".text-wrapper");
   const text = document.querySelector(".text");
-  const moreText = document.querySelector(".more-text");
-  const lessText = document.querySelector(".less-text");
+  const moreText = document.querySelectorAll(".more-text");
+  const lessText = document.querySelectorAll(".less-text");
 
   // 더보기 클릭 시 이벤트
   moreText.addEventListener("click", () => {

@@ -6,29 +6,20 @@ export const handleSearch = (searchKeyword) => {
     const title = card.querySelector(".movieTitle").textContent.toLowerCase();
     const searchedValue = searchKeyword.toLowerCase();
 
-    if (title.includes(searchedValue)) {
+    // 검색 결과 있을 때, 빈 배열에 카드 제목 추가
+    if (title.includes(searchedValue) === true) {
       cardsArray.push(title);
-    } else {
-    }
-    console.log(cardsArray);
-
-    /* 영화 검색 유효성 검사 */
-    if (cardsArray.length === 0) {
-      return alert(`검색 결과가 없습니다. 다시 입력해 주세요.`);
-    } else if (title.includes(cardsArray)) {
       card.style.display = "block";
     } else {
       card.style.display = "none";
     }
   });
 
-  //   const cards = document.querySelectorAll(".movie-card");
-  //   const isEveryCardsnotShown = [...cards].every((card) => {
-  //     return card.style.display === "none";
-  //   });
-  //   console.log(isEveryCardsnotShown);
-  //   if (isEveryCardsnotShown === true) {
-  //     alert(`검색 결과가 없습니다. 다시 입력해 주세요.`);
-  //   } else {
-  //   }
+  // 검색 결과가 없을 경우(=빈 배열 상태), alert 띄우기 + 기존 카드 모두 보이게하기
+  if (cardsArray.length === 0) {
+    alert(`검색 결과가 없습니다. 다시 입력해 주세요.`);
+    movieCards.forEach((card) => {
+      card.style.display = "block";
+    });
+  }
 };
