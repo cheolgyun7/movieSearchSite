@@ -22,5 +22,6 @@ form.addEventListener("submit", (e) => {
     });
     return;
   }
+
   handleSearch(searchInput.value.trim());
 });

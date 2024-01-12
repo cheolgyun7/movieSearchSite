@@ -5,8 +5,8 @@ export const movieCards = async () => {
   movieList.innerHTML = movies
     .map(
       (movie) => `
-  <li class="movie-card" id=${movie.id}>
-  
+  <li data-id=${movie.id} class="movie-card" id=${`movie-${movie.id}`}>
+  <div class="cardsTop">
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
   <h3 class="movieTitle">${movie.title}</h3>
 
@@ -18,7 +18,7 @@ export const movieCards = async () => {
   <br>
   <p>Release Date : ${movie.release_date}</p>
   <p class="movieGrade">Rating : ${movie.vote_average}</p>
-  
+  </div>
   <div class="movePageBtn">
   <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
   </div>
@@ -30,30 +30,38 @@ export const movieCards = async () => {
   /* 영화 줄거리 더보기/ 줄이기 */
 
   // 코드에 필요한 요소 변수 시장
+  // const moreText = document.querySelectorAll(".more-text");
+  // const lessText = document.querySelectorAll(".less-text");
 
-  const textWapper = document.querySelector(".text-wrapper");
-  const text = document.querySelector(".text");
-  const moreText = document.querySelectorAll(".more-text");
-  const lessText = document.querySelectorAll(".less-text");
+  // console.log(movies);
 
-  // 더보기 클릭 시 이벤트
-  moreText.addEventListener("click", () => {
-    moreText.style.display = "none";
-    lessText.style.display = "inline-block";
-    text.style.display = "inline-block";
-  });
+  movies.forEach((repeat) => {
+    const moreText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.more-text`);
+    const lessText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.less-text`);
+    const textContent = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.text`);
+    // console.log(moreText);
+    // console.log(lessText);
+    console.log(textContent);
 
-  // 줄이기 클릭 시 이벤트
-  lessText.addEventListener("click", () => {
-    moreText.style.display = "inline-block";
-    lessText.style.display = "none";
-    text.style.display = "-webkit-box";
+    // 더보기 클릭 시 이벤트
+    moreText.addEventListener("click", () => {
+      moreText.style.display = "none";
+      lessText.style.display = "inline-block";
+      textContent.style.display = "inline-block";
+    });
+
+    // 줄이기 클릭 시 이벤트
+    lessText.addEventListener("click", () => {
+      moreText.style.display = "inline-block";
+      lessText.style.display = "none";
+      textContent.style.display = "-webkit-box";
+    });
   });
 
   /* 카드 클릭 했을 때 id alert 뜨기 */
   movieList.addEventListener("click", handleClickCard);
 
-  function handleClickCard({ target }) {
+  function handleClickCard(event) {
     // if (target === movieList) return;
     // if (target === $(".linkBtn")) return;
 
@@ -62,8 +70,9 @@ export const movieCards = async () => {
     // } else {
     //   alert(`영화 id : ${target.parentNode.id}`);
     // }
-    if (target.matches(".imgClass")) {
-      alert(`영화 id : ${target.parentNode.id}`);
+    if (event.target.matches(".imgClass")) {
+      alert(`영화 id : ${event.target.parentNode.parentNode.dataset.id}`);
+      console.log(event.target.parentNode);
     }
   }
 };
