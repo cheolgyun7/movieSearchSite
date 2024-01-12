@@ -5,6 +5,7 @@ export const movieCards = async () => {
   movieList.innerHTML = movies
     .map(
       (movie) => `
+      
   <li data-id=${movie.id} class="movie-card" id=${`movie-${movie.id}`}>
   <div class="cardsTop">
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
@@ -19,9 +20,11 @@ export const movieCards = async () => {
   <p>Release Date : ${movie.release_date}</p>
   <p class="movieGrade">Rating : ${movie.vote_average}</p>
   </div>
+  <a href = "/index2.html?id=${movie.id}">
   <div class="movePageBtn">
   <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
-  </div>
+  </div> 
+  </a>
   </li>
   `
     )
@@ -29,19 +32,13 @@ export const movieCards = async () => {
 
   /* 영화 줄거리 더보기/ 줄이기 */
 
-  // 코드에 필요한 요소 변수 시장
-  // const moreText = document.querySelectorAll(".more-text");
-  // const lessText = document.querySelectorAll(".less-text");
-
-  // console.log(movies);
-
   movies.forEach((repeat) => {
     const moreText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.more-text`);
     const lessText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.less-text`);
     const textContent = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.text`);
     // console.log(moreText);
     // console.log(lessText);
-    console.log(textContent);
+    // console.log(textContent);
 
     // 더보기 클릭 시 이벤트
     moreText.addEventListener("click", () => {
@@ -87,7 +84,7 @@ async function fetchMovieData() {
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzFjNzNiNzQ4N2IwMTM5ZTI2MDU5MjFhZTBhMjA0MCIsInN1YiI6IjY1OTY1YTFmMzI2ZWMxNGU2ZDA2YzFkMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.h6L2OeVyMqWiyUQs3Qi5f-6rwiWL-k8Oku-0G_5f6S0"
     }
   };
-  const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", options);
+  const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=ko-KR", options);
   const data = await response.json();
   return data.results;
 }

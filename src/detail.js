@@ -9,8 +9,12 @@ function detailPageOn() {
   };
 
   //이 부분이 아이디 값 받아올 부분입니다!!!! 임의로 값을 변수에 넣어서 해놓은 부분입니다
+  const URLSearch = new URLSearchParams(location.search);
+  let id = URLSearch.get("id");
+  console.log(id);
+
   // url에서 id값 추출해서 적용
-  let movieId = 572802;
+  let movieId = id;
 
   let url = "https://api.themoviedb.org/3/movie/" + movieId + "?language=ko-KR";
   fetch(url, options)
