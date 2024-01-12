@@ -15,7 +15,7 @@ export const handleSearch = (searchKeyword) => {
     }
   });
 
-  // 검색 결과가 없을 경우(=빈 배열 상태), alert 띄우기 + 기존 카드 모두 보이게하기
+  // 검색 결과가 없을 경우(=빈 배열 상태), alert 띄우기 + 기존 카드 모두 보이게 하기
   if (cardsArray.length === 0) {
     alert(`검색 결과가 없습니다. 다시 입력해 주세요.`);
     movieCards.forEach((card) => {
