@@ -1,8 +1,9 @@
 header {
   text-align: center;
-  padding: 30px 0;
-  background-color: rgb(211, 157, 255);
-  margin-top: 30px;
+  margin: 10px auto 10px auto;
+}
+.logo {
+  width: 80px;
 }
 .searchDiv {
   display: flex;
@@ -62,6 +63,18 @@ header {
   cursor: pointer;
   background-color: rgb(248, 239, 255);
   border-radius: 30px;
+}
+
+.movie-card:hover {
+  position: relative;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(248, 239, 255);
+  border-radius: 30px;
+
+  box-shadow: 1px 1px 20px #ddd;
 }
 
 .movePageBtn {
