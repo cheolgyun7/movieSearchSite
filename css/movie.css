@@ -56,30 +56,37 @@ header {
 }
 
 .movie-card {
-  position: relative;
   width: 300px;
   margin: 10px;
   padding: 10px;
   cursor: pointer;
   background-color: rgb(248, 239, 255);
   border-radius: 30px;
+  position: relative;
 }
 
 .movie-card:hover {
-  position: relative;
   width: 300px;
   margin: 10px;
   padding: 10px;
   cursor: pointer;
   background-color: rgb(248, 239, 255);
   border-radius: 30px;
-
   box-shadow: 1px 1px 20px #ddd;
 }
 
+.cardsTop {
+  padding-bottom: 50px;
+}
+
 .movePageBtn {
-  width: 150px;
+  width: 100%;
   position: absolute;
-  bottom: 15px;
-  right: 5px;
+  bottom: 0;
+  padding-bottom: 20px;
+  padding-left: 120px;
+}
+
+#pageBtn {
+  width: 150px;
 }
