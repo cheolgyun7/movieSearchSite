@@ -4,6 +4,10 @@
   margin: 10px auto 10px auto;
 }
 
+.logo {
+  width: 80px;
+}
+
 .container {
   display: flex;
 }
