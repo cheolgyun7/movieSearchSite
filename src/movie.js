@@ -30,7 +30,7 @@ export const movieCards = async () => {
     )
     .join("");
 
-  /* 영화 줄거리 더보기/ 줄이기 */
+  /* 영화 줄거리 더보기/줄이기 */
 
   movies.forEach((repeat) => {
     const moreText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.more-text`);
@@ -55,7 +55,7 @@ export const movieCards = async () => {
     });
   });
 
-  /* 카드 클릭 했을 때 id alert 뜨기 */
+  /* 카드 클릭 했을 때, id alert 뜨기 */
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard(event) {

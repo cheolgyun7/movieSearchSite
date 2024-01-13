@@ -39,10 +39,10 @@ window.onload = function detailPageOn() {
                               <p>줄거리</p><br>
                               <p>${overview}</p>
                           </div>
-      
+     
                           <!--리뷰 작성칸, 리뷰창-->
                           <div class="review">
-                          
+                       
                           </div>
                  `;
 
