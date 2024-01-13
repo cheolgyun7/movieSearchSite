@@ -8,23 +8,25 @@ export const movieCards = async () => {
       
   <li data-id=${movie.id} class="movie-card" id=${`movie-${movie.id}`}>
   <div class="cardsTop">
-  <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
-  <h3 class="movieTitle">${movie.title}</h3>
+    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
+    <h3 class="movieTitle">${movie.title}</h3>
 
     <div class="text-wrapper">
-    <span class="text">${movie.overview}</span>
-    <span class="more-text">더보기</span>
-    <span class="less-text">줄이기</span>
+      <span class="text">${movie.overview}</span>
+      <span class="more-text">더보기</span>
+      <span class="less-text">줄이기</span>
     </div>
-  <br>
-  <p>Release Date : ${movie.release_date}</p>
-  <p class="movieGrade">Rating : ${movie.vote_average}</p>
+
+    <br>
+    <p>Release Date : ${movie.release_date}</p>
+    <p class="movieGrade">Rating : ${movie.vote_average}</p>
   </div>
-  <a href = "/index2.html?id=${movie.id}">
-  <div class="movePageBtn">
-  <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
-  </div> 
-  </a>
+
+    <a href = "/index2.html?id=${movie.id}">
+    <div class="movePageBtn">
+      <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
+    </div> 
+    </a>
   </li>
   `
     )
