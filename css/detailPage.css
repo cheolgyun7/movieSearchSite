@@ -1,4 +1,9 @@
 /* 상세페이지 CSS */
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
 .top {
   text-align: center;
   margin: 10px auto 10px auto;

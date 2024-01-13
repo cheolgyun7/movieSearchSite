@@ -28,24 +28,24 @@ window.onload = function detailPageOn() {
       const overview = data["overview"];
 
       const temp_html1 = `
-                         <img src="https://image.tmdb.org/t/p/original${posterPath}" class="posterImage" alt="${title}"/>
+                      <img src="https://image.tmdb.org/t/p/original${posterPath}" class="posterImage" alt="${title}"/>
                      `;
       const temp_html2 = `
                       <div class="title">
                               <h1>${title}</h1>
-                          </div>
-                          <div class="content">
-                              <p>개봉일 : ${releaseDate}</p><br>
-                              <p>평점 : ${voteAverage}</p><br>
-                              <p>줄거리</p><br>
-                              <p>${overview}</p>
-                          </div>
-                          <div>
-                          <input type="text" id="reviewer" placeholder="작성자명">
-                          <input type="text" id="review" placeholder="리뷰작성">
-                          <input type="text" id="pwd" placeholder="비밀번호">
-                            <button id="saveButton">저장</button>
-                          </div>
+                      </div>
+                      <div class="content">
+                          <p>개봉일 : ${releaseDate}</p><br>
+                          <p>평점 : ${voteAverage}</p><br>
+                          <p>줄거리</p><br>
+                          <p>${overview}</p>
+                      </div>
+                      <div>
+                        <input type="text" id="reviewer" placeholder="작성자명">
+                        <input type="text" id="review" placeholder="리뷰작성">
+                        <input type="text" id="pwd" placeholder="비밀번호">
+                        <button id="saveButton">저장</button>
+                      </div>
                  `;
 
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
