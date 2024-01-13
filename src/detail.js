@@ -40,14 +40,46 @@ window.onload = function detailPageOn() {
                               <p>줄거리</p><br>
                               <p>${overview}</p>
                           </div>
-      
-                          <!--리뷰 작성칸, 리뷰창-->
-                          <div class="review">
-                          
+                          <div>
+                          <input type="text" id="reviewer" placeholder="작성자명">
+                          <input type="text" id="review" placeholder="리뷰작성">
+                          <input type="text" id="pwd" placeholder="비밀번호">
+                            <button id="saveButton">저장</button>
                           </div>
                  `;
 
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
-      document.querySelector("#secondPage").insertAdjacentHTML("beforeend", temp_html2);
+      document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html2);
+      form.addEventListener("submit", (e) => rereview(e, movieId));
     });
+
+  const rereview = (e, movieId) => {
+    e.preventDefault();
+    //기존리뷰
+    const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+
+    const newReview = {
+      reviewer: document.getElementById("reviewer").value,
+      review: document.getElementById("review").value,
+      pwd: document.getElementById("pwd").value
+    };
+    existingReview.push(newReview);
+    localStorage.setItem(movieId, JSON.stringify(existingReview));
+    reviewList();
+  };
+  const reviewList = () => {
+    const reviewsContainer = document.getElementById("reviewForm");
+    reviewsContainer.innerHTML = ""; // 기존 내용을 지우고 새로운 리뷰로 대체
+
+    const movieId = URLSearch.get("id");
+    const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+
+    existingReview.forEach((review, index) => {
+      reviewsContainer.insertAdjacentHTML(
+        "beforeend",
+        `리뷰 ${index + 1}: ${review.reviewer} - ${review.review}<br />`
+      );
+    });
+  };
+  reviewList();
 };

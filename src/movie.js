@@ -5,7 +5,6 @@ export const movieCards = async () => {
   movieList.innerHTML = movies
     .map(
       (movie) => `
-      
   <li data-id=${movie.id} class="movie-card" id=${`movie-${movie.id}`}>
   <div class="cardsTop">
     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
@@ -28,6 +27,7 @@ export const movieCards = async () => {
     </div> 
     </a>
   </li>
+  </a>
   `
     )
     .join("");
