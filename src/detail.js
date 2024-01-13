@@ -1,4 +1,4 @@
-function detailPageOn() {
+window.onload = function detailPageOn() {
   const options = {
     method: "GET",
     headers: {
@@ -9,8 +9,12 @@ function detailPageOn() {
   };
 
   //이 부분이 아이디 값 받아올 부분입니다!!!! 임의로 값을 변수에 넣어서 해놓은 부분입니다
+  const URLSearch = new URLSearchParams(location.search);
+  let id = URLSearch.get("id");
+  console.log(id);
+
   // url에서 id값 추출해서 적용
-  let movieId = 572802;
+  let movieId = id;
 
   let url = "https://api.themoviedb.org/3/movie/" + movieId + "?language=ko-KR";
   fetch(url, options)
@@ -37,7 +41,7 @@ function detailPageOn() {
                           </div>
       
                           <!--리뷰 작성칸, 리뷰창-->
-                          <div class="review">
+                          <div id="reviewForm">
                           
                           </div>
                  `;
@@ -45,4 +49,20 @@ function detailPageOn() {
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
       document.querySelector("#secondPage").insertAdjacentHTML("beforeend", temp_html2);
     });
-}
+
+  const rereview = (e, movieId) => {
+    e.preventDefault();
+    const object = [
+      {
+        reviewer: document.getElementById("reviewer").value,
+        review: document.getElementById("review").value,
+        pwd: document.getElementById("pwd").value
+      }
+    ];
+    const objString = JSON.stringify(object);
+    console.log(objString);
+    console.log(movieId);
+    localStorage.setItem(movieId, objString);
+    reviewList();
+  };
+};
