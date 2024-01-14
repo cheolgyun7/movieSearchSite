@@ -1,3 +1,4 @@
+// 파일이 열림과 동시에 실행, api 호출
 window.onload = function detailPageOn() {
   const options = {
     method: "GET",
@@ -8,7 +9,6 @@ window.onload = function detailPageOn() {
     }
   };
 
-  //이 부분이 아이디 값 받아올 부분입니다!!!! 임의로 값을 변수에 넣어서 해놓은 부분입니다
   // get 함수를 이용해서 각각 id에 맞는 값만 가져올 수 있도록 함
   const URLSearch = new URLSearchParams(location.search);
   let id = URLSearch.get("id");
@@ -27,6 +27,15 @@ window.onload = function detailPageOn() {
       const releaseDate = data["release_date"];
       const overview = data["overview"];
 
+      // 장르도 객체안에 있는 배열 값 추출해서 문자열로 합침
+      const genres = data["genres"];
+      const genreList = [];
+      for (key in genres) {
+        genreList.push(genres[key].name);
+      }
+      const genre = genreList.join(", ");
+
+      // 받아온 데이터들을 html 파일에 붙이기
       const temp_html1 = `
                       <img src="https://image.tmdb.org/t/p/original${posterPath}" class="posterImage" alt="${title}"/>
                      `;
@@ -34,9 +43,13 @@ window.onload = function detailPageOn() {
                       <div class="title">
                               <h1 class="title_font">${title}</h1>
                       </div>
-                      <div class="content">
-                          <p class="releaseDate">개봉일 : ${releaseDate}   /  평점 : ${voteAverage}</p><br>
+                      </div>
+                      <div class="content_top">
+                          <p class="releaseDate">개봉일 : ${releaseDate}</p><br>
+                          <p class="genres">장르 : ${genre}</p><br>
                           <p class="voteAverage">평점 : ${voteAverage}</p><br>
+                      </div>
+                      <div class="content_bottom">
                           <p class="overview">${overview}</p><br>
                       </div>
                       <div>
