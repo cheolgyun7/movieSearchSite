@@ -54,14 +54,16 @@ window.onload = function detailPageOn() {
     });
 
   const rereview = (e, movieId) => {
-    e.preventDefault();
-    //기존리뷰
-    const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+    e.preventDefault(); //기존 폼 제출 동작방지
+    const existingReview = JSON.parse(localStorage.getItem(movieId)) || []; //기존리뷰를 가지고 오거나 빈배열을 초기화함
+
     const newReview = {
+      //새로운리뷰
       reviewer: document.getElementById("reviewer").value,
       review: document.getElementById("review").value,
       pwd: document.getElementById("pwd").value
     };
+    //기존배열에 새 배열을 push함
     existingReview.push(newReview);
     localStorage.setItem(movieId, JSON.stringify(existingReview));
     reviewList();
