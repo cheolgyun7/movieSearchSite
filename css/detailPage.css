@@ -1,7 +1,8 @@
 /* 상세페이지 CSS */
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
-* {
-  font-family: "Gowun Dodum", sans-serif;
+
+body {
+  background-color: rgb(236, 232, 227);
 }
 
 .top {
@@ -18,17 +19,18 @@
 }
 
 .first {
-  width: 50%;
+  width: 40%;
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
 }
 
+/* 포스터 이미지 */
 .posterImage {
   width: 500px;
-  border: 2px solid rgb(72, 94, 72);
+  border: 2px solid #69a169;
   border-radius: 10px;
-  box-shadow: 0px 5px 15px gray;
+  box-shadow: 1px 1px 20px gray;
 }
 
 .second {
@@ -36,4 +38,51 @@
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
+}
+
+/* 영화 제목 */
+.title {
+  height: 50px;
+  color: #3a5a40;
+
+  padding: 20px 20px;
+  border: 2px solid #69a169;
+  border-radius: 10px;
+
+  margin: auto auto 20px auto;
+}
+
+.title_font {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+/* 개봉일 */
+.releaseDate {
+  font-family: "Gowun Dodum", sans-serif;
+  color: white;
+}
+
+/* 평점 */
+.voteAverage {
+  font-family: "Gowun Dodum", sans-serif;
+  color: white;
+}
+
+/* 줄거리 */
+.overview {
+  font-family: "Gowun Dodum", sans-serif;
+  color: white;
+}
+
+/* 개봉일 + 평점 + 줄거리 묶음 */
+.content {
+  background-color: #69a169;
+
+  padding: 20px 20px;
+  border: 2px solid #69a169;
+  border-radius: 10px;
+
+  margin: auto auto 20px auto;
 }

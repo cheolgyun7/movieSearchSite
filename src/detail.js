@@ -32,13 +32,12 @@ window.onload = function detailPageOn() {
                      `;
       const temp_html2 = `
                       <div class="title">
-                              <h1>${title}</h1>
+                              <h1 class="title_font">${title}</h1>
                       </div>
                       <div class="content">
-                          <p>개봉일 : ${releaseDate}</p><br>
-                          <p>평점 : ${voteAverage}</p><br>
-                          <p>줄거리</p><br>
-                          <p>${overview}</p>
+                          <p class="releaseDate">개봉일 : ${releaseDate}   /  평점 : ${voteAverage}</p><br>
+                          <p class="voteAverage">평점 : ${voteAverage}</p><br>
+                          <p class="overview">${overview}</p><br>
                       </div>
                       <div>
                         <input type="text" id="reviewer" placeholder="작성자명">
