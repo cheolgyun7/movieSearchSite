@@ -1,4 +1,13 @@
 /* 상세페이지 CSS */
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
+
+body {
+  background-color: rgb(236, 232, 227);
+  /* background-image: url("../backgroundImage.jpg");
+  background-size: cover;
+  background-position: center; */
+}
+
 .top {
   text-align: center;
   margin: 10px auto 10px auto;
@@ -12,18 +21,28 @@
   display: flex;
 }
 
+.line {
+  width: 100%;
+  height: 50px;
+  background-color: #3066b8b9;
+}
+
 .first {
-  width: 50%;
+  width: 40%;
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
 }
 
+/* 포스터 이미지 */
 .posterImage {
-  width: 500px;
-  border: 2px solid rgb(72, 94, 72);
+  width: 80%;
+
   border-radius: 10px;
-  box-shadow: 0px 5px 15px gray;
+  box-shadow: 1px 1px 20px gray;
+
+  padding: 20px 20px;
+  background-color: #ffffff2d;
 }
 
 .second {
@@ -31,4 +50,78 @@
   height: 80%;
   text-align: center;
   margin: 20px 20px 20px 20px;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px gray;
+
+  padding: 20px 20px;
+  background-color: #ffffff2d;
+}
+
+/* 영화 제목 */
+.title {
+  height: 40px;
+  color: #3066b8;
+  background-color: #ffffff2d;
+
+  padding: 20px 20px;
+  border: 2px solid #3066b8;
+  border-radius: 10px;
+
+  margin: auto auto 20px auto;
+}
+
+.title_font {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+/* 개봉일 */
+.releaseDate {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 평점 */
+.voteAverage {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+.genres {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 개봉일 + 장르 + 평점 */
+.content_top {
+  display: flex;
+  color: black;
+}
+
+/* 줄거리 */
+.overview {
+  font-family: "Gowun Dodum", sans-serif;
+  color: white;
+}
+
+/* 줄거리 */
+.content_bottom {
+  background-color: #3066b8b9;
+
+  padding: 20px 20px;
+  border: 2px solid #3066b8b9;
+  border-radius: 10px;
+
+  margin: auto auto 20px auto;
 }
