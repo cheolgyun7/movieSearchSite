@@ -40,7 +40,7 @@ window.onload = function detailPageOn() {
                               <p>줄거리</p><br>
                               <p>${overview}</p>
                           </div>
-                          <div>
+                          <div class="reviewBox">
                           <input type="text" id="reviewer" placeholder="작성자명">
                           <input type="text" id="review" placeholder="리뷰작성">
                           <input type="text" id="pwd" placeholder="비밀번호">
@@ -57,7 +57,6 @@ window.onload = function detailPageOn() {
     e.preventDefault();
     //기존리뷰
     const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
-
     const newReview = {
       reviewer: document.getElementById("reviewer").value,
       review: document.getElementById("review").value,
