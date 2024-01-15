@@ -119,11 +119,11 @@ window.onload = function detailPageOn() {
       // const directer = crew[index]["name"];
 
       // 받아온 데이터들을 html 파일에 붙이기
-      const temp_html4 = `
+      const temp_html = `
                       <p class="castList">💁 출연진 : ${cast}</p><br>
                      `;
 
-      document.querySelector(".cast").insertAdjacentHTML("beforeend", temp_html4);
+      document.querySelector(".cast").insertAdjacentHTML("beforeend", temp_html);
     });
 
   const rereview = (e, movieId) => {
