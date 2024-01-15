@@ -129,7 +129,25 @@ body {
 /* 리뷰작성쪽 css */
 
 .reviewBox {
+  display: flex;
   margin: 20px 0;
 }
-
+.writeBox {
+  width: 60%;
+}
+.readBox {
+  width: 40%;
+  background-color: blue;
+}
+.reviewBox p {
+  display: flex;
+  margin: 20px 0;
+}
+.reviewBox input {
+  padding: 10px;
+}
+#review {
+  display: block;
+  width: 80%;
+}
 /* 리뷰작성쪽 css */

@@ -52,11 +52,18 @@ window.onload = function detailPageOn() {
                       <div class="content_bottom">
                           <p class="overview">${overview}</p><br>
                       </div>
-                      <div>
-                        <input type="text" id="reviewer" placeholder="작성자명">
-                        <input type="text" id="review" placeholder="리뷰작성">
-                        <input type="text" id="pwd" placeholder="비밀번호">
-                        <button id="saveButton">저장</button>
+                      <div class="reviewBox">
+                        <div class="writeBox">
+                          <p>
+                            <input type="text" id="reviewer" placeholder="작성자명">
+                            <input type="text" id="pwd" placeholder="비밀번호">
+                            <button id="saveButton">저장</button>
+                          </p>
+                          <textarea type="text" id="review" placeholder="리뷰작성"></textarea>
+                        </div>
+                        <div class="readBox">
+
+                        </div>
                       </div>
                  `;
 
