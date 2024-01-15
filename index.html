@@ -13,14 +13,19 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <style>
+      body {
+        background-color: rgb(236, 232, 227);
+      }
+    </style>
   </head>
   <body>
     <header>
-      <img src="movie.png" alt="logoImage" class="logo" onclick="location.href='index.html'" />
+      <img src="movieBlue.png" alt="logoImage" class="logo" onclick="location.href='index.html'" />
     </header>
     <form id="search-form">
       <div class="searchDiv">
-        <label for="searchId">영화 검색 :</label>
+        <label style="color: white" for="searchId">영화 검색 :</label>
         <input type="text" id="searchId" placeholder="제목을 입력하세요." />
         <button type="submit" class="btn btn-outline-light">검색</button>
       </div>

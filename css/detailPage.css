@@ -20,7 +20,7 @@ body {
 
 .line {
   width: 100%;
-  height: 50px;
+  height: 20px;
   background-color: #3066b8b9;
 }
 
@@ -54,7 +54,7 @@ body {
 /* 영화 제목 */
 .title {
   height: 50px;
-  color: #3066b8;
+  color: #204377;
   background-color: #ffffff2d;
 
   padding: 20px 20px;
@@ -86,15 +86,6 @@ body {
   padding: 10px 20px;
 }
 
-/* 평점 */
-.voteAverage {
-  font-family: "Gowun Dodum", sans-serif;
-  font-weight: bold;
-
-  margin: auto auto 20px auto;
-  padding: 10px 20px;
-}
-
 /* 장르 */
 .genres {
   font-family: "Gowun Dodum", sans-serif;
@@ -104,10 +95,44 @@ body {
   padding: 10px 20px;
 }
 
-/* 개봉일 + 장르 + 평점 한줄로 표현 */
+/* 런타임 */
+.runtime {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 평점 */
+.voteAverage {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 개봉일 + 장르 + 런타임 + 평점 한줄로 표현 */
 .content_top {
   display: flex;
   color: black;
+}
+
+/* 출연진 리스트*/
+.castList {
+  font-family: "Gowun Dodum", sans-serif;
+
+  margin: auto auto 10px auto;
+  padding: 10px 20px;
+}
+
+/**/
+.direct {
+  font-family: "Gowun Dodum", sans-serif;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
 }
 
 /* 줄거리 */
@@ -126,6 +151,24 @@ body {
   border-radius: 10px;
 
   margin: auto auto 20px auto;
+}
+
+/*리뷰 타이틀 설정*/
+.revBox {
+  height: 50px;
+  width: 100px;
+  color: #204377;
+  background-color: #ffffff8a;
+
+  border-radius: 10px;
+  margin: 20px auto 20px 10px;
+}
+
+.reviewTitle {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+  line-height: 1.5;
 }
 
 /* 리뷰작성쪽 css */
