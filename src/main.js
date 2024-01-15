@@ -25,14 +25,3 @@ form.addEventListener("submit", (e) => {
 
   handleSearch(searchInput.value.trim());
 });
-
-// // /* img 눌렀을 때, 새로고침하기 */
-// const headerForm = document.querySelector("#reload-form");
-
-// // img 클릭 시, 화면 새로고침하기
-// headerForm.addEventListener("click", (img) => {
-//   window.location.reload();
-// });
-
-// <!--header에 icon 이용해서 -->
-/* <input id="reload-form" type="image" width="100px" src="movie.png" alt="" value="페이지 새로 고침" /> */
