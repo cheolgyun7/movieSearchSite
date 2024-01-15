@@ -27,7 +27,7 @@ window.onload = function detailPageOn() {
       const releaseDate = data["release_date"];
       const overview = data["overview"];
 
-      // 장르도 객체안에 있는 배열 값 추출해서 문자열로 합침
+      // 장르도 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
       const genres = data["genres"];
       const genreList = [];
       for (key in genres) {
@@ -44,6 +44,7 @@ window.onload = function detailPageOn() {
                               <h1 class="title_font">${title}</h1>
                       </div>
                       </div>
+                      <div 
                       <div class="content_top">
                           <p class="releaseDate">개봉일 : ${releaseDate}</p>
                           <p class="genres">장르 : ${genre}</p>
