@@ -8,11 +8,6 @@
   --bg-point-color: #3066b8b9;
 }
 
-/* body */
-body {
-  background-color: rgb(236, 232, 227);
-}
-
 /* header */
 header {
   text-align: center;
@@ -53,6 +48,29 @@ header {
   margin: 0 10px;
   width: 300px;
   border-radius: 5px;
+}
+
+/* 카드 정렬하기 button */
+.sortBtn {
+  width: 150px;
+  height: 30px;
+
+  text-align: center;
+  margin: 10px 30px;
+  float: right;
+
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+.basicBtn {
+  border: 0;
+  background-color: transparent;
+}
+
+.averageBtn {
+  border: 0;
+  background-color: transparent;
 }
 
 /* ul 태그 flex 설정 */
