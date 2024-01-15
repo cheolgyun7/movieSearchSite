@@ -1,7 +1,6 @@
 export const movieCards = (movies) => {
+  // console.log(movies);
   /* 카드 리스트 */
-  console.log(movies);
-
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
     .map(
@@ -41,45 +40,26 @@ export const movieCards = (movies) => {
   `
     )
     .join("");
+
+  /* 기본으로 영화 정렬하기 */
+  // const basiclistText = document.querySelector(".basicBtn");
+  // basiclistText.addEventListener("click", async () => {
+  //   await movieCards(movies);
+  // });
+
+  /* 평점순으로 영화 정렬하기*/
+  // "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
+  let averageArray = Array.from(movies);
+
+  const movieAverageList = averageArray.sort((a, b) => {
+    return b.vote_average - a.vote_average;
+  });
+
+  const averagelistText = document.querySelector(".averageBtn");
+  averagelistText.addEventListener("click", async () => {
+    await movieCards(movieAverageList);
+  });
 };
-
-/* 카드 클릭 했을 때, id alert 뜨기 */
-// movieList.addEventListener("click", handleClickCard);
-
-// function handleClickCard(event) {
-//   // if (target === movieList) return;
-//   // if (target === $(".linkBtn")) return;
-
-//   // if (target.matches(".movie-card")) {
-//   //   alert(`영화 id : ${target.id}`);
-//   // } else {
-//   //   alert(`영화 id : ${target.parentNode.id}`);
-//   // }
-//   if (event.target.matches(".imgClass")) {
-//     alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
-//     console.log(event.target.parentNode);
-//   }
-// }
-
-/* 평점 순으로 영화 정렬하기*/
-// "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
-const movieLists = document.querySelectorAll(".movie-card");
-const movieAverageList = [];
-
-movieLists.forEach((moviecard) => {
-  const movieAverage = moviecard.querySelector(".voteAver").textContent;
-  const moviesTitle = moviecard.querySelector(".movieTitle").textContent;
-
-  movieAverageList.push({ star: movieAverage, title: moviesTitle });
-});
-
-movieAverageList.sort((a, b) => {
-  return b.star - a.star;
-});
-
-// console.log(movieAverageList);
-
-// for(i=0; i<movieAverageList.length; i++)
 
 /* fetch로 open api 가져오기 */
 export async function fetchMovieData() {
