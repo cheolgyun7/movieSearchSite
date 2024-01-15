@@ -1,6 +1,7 @@
 export const movieCards = async () => {
   const movies = await fetchMovieData();
 
+  /* 카드 리스트 */
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
     .map(
@@ -44,25 +45,25 @@ export const movieCards = async () => {
     .join("");
 
   /* 카드 클릭 했을 때, id alert 뜨기 */
-  movieList.addEventListener("click", handleClickCard);
+  // movieList.addEventListener("click", handleClickCard);
 
-  function handleClickCard(event) {
-    // if (target === movieList) return;
-    // if (target === $(".linkBtn")) return;
+  // function handleClickCard(event) {
+  //   // if (target === movieList) return;
+  //   // if (target === $(".linkBtn")) return;
 
-    // if (target.matches(".movie-card")) {
-    //   alert(`영화 id : ${target.id}`);
-    // } else {
-    //   alert(`영화 id : ${target.parentNode.id}`);
-    // }
-    if (event.target.matches(".imgClass")) {
-      alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
-      console.log(event.target.parentNode);
-    }
-  }
+  //   // if (target.matches(".movie-card")) {
+  //   //   alert(`영화 id : ${target.id}`);
+  //   // } else {
+  //   //   alert(`영화 id : ${target.parentNode.id}`);
+  //   // }
+  //   if (event.target.matches(".imgClass")) {
+  //     alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
+  //     console.log(event.target.parentNode);
+  //   }
+  // }
 };
 
-//fetch로 open api 가져오기
+/* fetch로 open api 가져오기 */
 async function fetchMovieData() {
   const options = {
     method: "GET",

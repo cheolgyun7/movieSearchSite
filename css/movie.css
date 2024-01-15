@@ -1,7 +1,7 @@
 /* 메인페이지 CSS */
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
 
-/* 사용 color */
+/* color */
 :root {
   --bg-background-color: rgb(236, 232, 227);
   --bg-card-color: #4a724a65;
