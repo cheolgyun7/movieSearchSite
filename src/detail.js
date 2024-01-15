@@ -22,12 +22,26 @@ window.onload = function detailPageOn() {
     .then((res) => res.json())
     .then((data) => {
       const title = data["title"];
+      let originalTitle = data["original_title"];
+
+      var pattern2 = /[a-zA-Z]/; //영어
+      var pattern3 = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; //한글
+
+      // title명이
+      if (pattern2.test(title)) {
+        originalTitle = "";
+      }
+
       const posterPath = data["poster_path"];
       const voteAverage = data["vote_average"];
       const releaseDate = data["release_date"];
-      const overview = data["overview"];
+      let overview = data["overview"];
+      // 불러온 데이터 값에서 overview의 줄거리 정보가 없는 경우
+      if (overview == "") {
+        overview = "줄거리 정보가 없습니다";
+      }
 
-      // 장르도 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
+      // 장르, 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
       const genres = data["genres"];
       const genreList = [];
       for (key in genres) {
@@ -41,14 +55,13 @@ window.onload = function detailPageOn() {
                      `;
       const temp_html2 = `
                       <div class="title">
-                              <h1 class="title_font">${title}</h1>
+                        <h1 class="title_font">${title}</h1>
+                        <h4 class="engTitle_font">${originalTitle}</h4>
                       </div>
-                      </div>
-                      <div 
                       <div class="content_top">
-                          <p class="releaseDate">개봉일 : ${releaseDate}</p>
-                          <p class="genres">장르 : ${genre}</p>
-                          <p class="voteAverage">평점 : ${voteAverage}</p>
+                        <p class="releaseDate">개봉일 : ${releaseDate}</p>
+                        <p class="genres">장르 : ${genre}</p>
+                        <p class="voteAverage">평점 : ${voteAverage}</p>
                       </div>
                       <div class="content_bottom">
                           <p class="overview">${overview}</p><br>
