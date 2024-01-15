@@ -1,7 +1,7 @@
-export const movieCards = async () => {
-  const movies = await fetchMovieData();
-
+export const movieCards = (movies) => {
   /* 카드 리스트 */
+  console.log(movies);
+
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
     .map(
@@ -35,36 +35,54 @@ export const movieCards = async () => {
       </div>
       <div class="cardsBottom">
         <h3 class="movieTitle">${movie.title}</h3>
-        <p>${movie.release_date} | ⭐️ : ${movie.vote_average}</p>
+        <p>${movie.release_date} | ⭐️ : <span class="voteAver">${movie.vote_average}</span></p>
       </div>
     </li>
-
-  
   `
     )
     .join("");
-
-  /* 카드 클릭 했을 때, id alert 뜨기 */
-  // movieList.addEventListener("click", handleClickCard);
-
-  // function handleClickCard(event) {
-  //   // if (target === movieList) return;
-  //   // if (target === $(".linkBtn")) return;
-
-  //   // if (target.matches(".movie-card")) {
-  //   //   alert(`영화 id : ${target.id}`);
-  //   // } else {
-  //   //   alert(`영화 id : ${target.parentNode.id}`);
-  //   // }
-  //   if (event.target.matches(".imgClass")) {
-  //     alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
-  //     console.log(event.target.parentNode);
-  //   }
-  // }
 };
 
+/* 카드 클릭 했을 때, id alert 뜨기 */
+// movieList.addEventListener("click", handleClickCard);
+
+// function handleClickCard(event) {
+//   // if (target === movieList) return;
+//   // if (target === $(".linkBtn")) return;
+
+//   // if (target.matches(".movie-card")) {
+//   //   alert(`영화 id : ${target.id}`);
+//   // } else {
+//   //   alert(`영화 id : ${target.parentNode.id}`);
+//   // }
+//   if (event.target.matches(".imgClass")) {
+//     alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
+//     console.log(event.target.parentNode);
+//   }
+// }
+
+/* 평점 순으로 영화 정렬하기*/
+// "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
+const movieLists = document.querySelectorAll(".movie-card");
+const movieAverageList = [];
+
+movieLists.forEach((moviecard) => {
+  const movieAverage = moviecard.querySelector(".voteAver").textContent;
+  const moviesTitle = moviecard.querySelector(".movieTitle").textContent;
+
+  movieAverageList.push({ star: movieAverage, title: moviesTitle });
+});
+
+movieAverageList.sort((a, b) => {
+  return b.star - a.star;
+});
+
+// console.log(movieAverageList);
+
+// for(i=0; i<movieAverageList.length; i++)
+
 /* fetch로 open api 가져오기 */
-async function fetchMovieData() {
+export async function fetchMovieData() {
   const options = {
     method: "GET",
     headers: {

@@ -1,7 +1,12 @@
 import { handleSearch } from "./search.js";
-import { movieCards } from "./movie.js";
+import { movieCards, fetchMovieData } from "./movie.js";
 
-movieCards();
+newFunction();
+
+const newFunction = async function () {
+  const movies = await fetchMovieData();
+  movieCards(movies);
+};
 
 const searchInput = document.querySelector("#searchId");
 searchInput.focus();
