@@ -57,6 +57,36 @@ window.onload = function detailPageOn() {
     e.preventDefault(); //기존 폼 제출 동작방지
     const existingReview = JSON.parse(localStorage.getItem(movieId)) || []; //기존리뷰를 가지고 오거나 빈배열을 초기화함
 
+    const reviewerInput = document.getElementById("reviewer").value;
+    const reviewInput = document.getElementById("review").value;
+    const pwdInput = document.getElementById("pwd").value;
+
+    /**
+     * 유효성검사 함수
+     */
+    // 1.작성자 유효성 검사 함수
+    function validateName(name) {
+      // 최소 2자 이상, 한글 또는 영어
+      return /^[가-힣a-zA-Z]{2,}$/.test(name);
+    }
+    if (!validateName(reviewerInput)) {
+      alert("작성자 이름을 입력하세요 (최소 2자, 한글 또는 영어).");
+      return;
+    }
+    // 2.리뷰 유효성 검사 함수
+    if (!reviewInput.trim()) {
+      alert("리뷰를 작성하세요");
+      return;
+    }
+    // 3.비밀번호 유효성 검사 함수
+    function validatePwd(pwd) {
+      // 4자리 숫자
+      return /^\d{4}$/.test(pwd);
+    }
+    if (!validatePwd(pwdInput)) {
+      alert("비밀번호 4자리를입력하세요(숫자)");
+      return;
+    }
     const newReview = {
       //새로운리뷰
       reviewer: document.getElementById("reviewer").value,
@@ -64,10 +94,16 @@ window.onload = function detailPageOn() {
       pwd: document.getElementById("pwd").value
     };
     //기존배열에 새 배열을 push함
+
     existingReview.push(newReview);
     localStorage.setItem(movieId, JSON.stringify(existingReview));
     reviewList();
+
+    document.getElementById("reviewer").value = "";
+    document.getElementById("review").value = "";
+    document.getElementById("pwd").value = "";
   };
+
   const reviewList = () => {
     const reviewsContainer = document.getElementById("reviewForm");
     reviewsContainer.innerHTML = ""; // 기존 내용을 지우고 새로운 리뷰로 대체
