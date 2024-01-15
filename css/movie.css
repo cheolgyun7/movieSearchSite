@@ -1,22 +1,38 @@
+:root {
+  --bg-background-color: rgb(236, 232, 227);
+  --bg-card-color: #4a724a65;
+}
+
+body {
+  background-color: rgb(229, 218, 204);
+}
+
 header {
   text-align: center;
   margin: 10px auto 10px auto;
 }
+
 .logo {
   width: 80px;
+}
+
+#search-form {
+  background-color: var(--bg-card-color);
 }
 .searchDiv {
   display: flex;
   justify-content: center;
+  flex-direction: row;
+  align-items: center;
+
   margin: 30px 0;
-  height: 30px;
+  padding: 10px;
+  height: 70px;
 }
 .searchDiv input {
   margin: 0 10px;
   width: 300px;
-}
-.searchDiv label {
-  line-height: 30px;
+  border-radius: 5px;
 }
 
 #movieList {
@@ -26,67 +42,94 @@ header {
   width: 100%;
   /* background-color: aquamarine; */
 }
+
+.movie-card {
+  width: 300px;
+  padding: 10px auto;
+  background-color: var(--bg-card-color);
+  border-radius: 30px;
+  list-style-type: none;
+  box-shadow: 1px 1px 20px #ddd;
+  margin: 10px auto;
+}
+
+.cardsTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .imgClass {
   width: 100%;
   border-radius: 30px;
   padding: 10px;
+  filter: brightness(1);
+  height: 425px;
 }
 
-.text-wrapper {
-  width: 100%;
+.imgClass:hover {
+  filter: brightness(0.3);
 }
 
-.text {
+.cardsTop .innerImg {
+  position: absolute;
+  top: 10%;
+  opacity: 0;
+}
+
+.cardsTop:hover .innerImg {
+  opacity: 1;
+}
+
+.innerImg {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.movieOverview {
+  text-align: center;
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 30px;
+  width: 90%;
+  margin: 10px;
+}
+
+.movieOverview > h4 {
+  margin: 5px auto;
+}
+
+.movieOverview > p {
+  width: 90%;
+  margin: 5px auto;
+  /*줄거리 줄 수 제한*/
   overflow: hidden;
+  text-overflow: ellipsis;
   display: -webkit-box;
+  -webkit-line-clamp: 10; /* 라인수 */
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  text-align: justify;
-}
-
-.more-text {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.less-text {
-  font-size: 16px;
-  cursor: pointer;
-  display: none;
-}
-
-.movie-card {
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  cursor: pointer;
-  background-color: rgb(248, 239, 255);
-  border-radius: 30px;
-  position: relative;
-}
-
-.movie-card:hover {
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  cursor: pointer;
-  background-color: rgb(248, 239, 255);
-  border-radius: 30px;
-  box-shadow: 1px 1px 20px #ddd;
-}
-
-.cardsTop {
-  padding-bottom: 50px;
+  word-wrap: break-word;
 }
 
 .movePageBtn {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 20px;
-  padding-left: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #pageBtn {
   width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cardsBottom {
+  padding: 10px;
+  text-align: center;
 }
