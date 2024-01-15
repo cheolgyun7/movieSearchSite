@@ -5,59 +5,45 @@ export const movieCards = async () => {
   movieList.innerHTML = movies
     .map(
       (movie) => `
-  <li data-id=${movie.id} class="movie-card" id=${`movie-${movie.id}`}>
-  <div class="cardsTop">
-    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="imgClass">
-    <h3 class="movieTitle">${movie.title}</h3>
+      <li data-id="${movie.id}" class="movie-card" id="${`movie-${movie.id}`}">
+      <div class="cardsTop">
+        <div>
+          <img
+            src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+            alt=""
+            class="imgClass"
+          />
+        </div>
+        <div class="innerImg">
+          <div class="movieOverview">
+            <h4>영화 소개</h4>
+            <p>${movie.overview}</p>
+          </div>
+          <div class="movePageBtn">
+            <a href="/index2.html?id=${movie.id}">
+              <button
+                id="pageBtn"
+                type="button"
+                class="btn btn-danger me-2"
+              >
+                상세 페이지
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="cardsBottom">
+        <h3 class="movieTitle">${movie.title}</h3>
+        <p>${movie.release_date} | ⭐️ : ${movie.vote_average}</p>
+      </div>
+    </li>
 
-    <div class="text-wrapper">
-      <span class="text">${movie.overview}</span>
-      <span class="more-text">더보기</span>
-      <span class="less-text">줄이기</span>
-    </div>
-
-    <br>
-    <p>Release Date : ${movie.release_date}</p>
-    <p class="movieGrade">Rating : ${movie.vote_average}</p>
-  </div>
-
-    <a href = "/index2.html?id=${movie.id}">
-    <div class="movePageBtn">
-      <button id="pageBtn" type="button" class="btn btn-outline-dark me-2">상세페이지 이동</button>
-    </div> 
-    </a>
-  </li>
-  </a>
+  
   `
     )
     .join("");
 
-  /* 영화 줄거리 더보기/ 줄이기 */
-
-  movies.forEach((repeat) => {
-    const moreText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.more-text`);
-    const lessText = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.less-text`);
-    const textContent = document.querySelector(`#movie-${repeat.id} > div.cardsTop > div > span.text`);
-    // console.log(moreText);
-    // console.log(lessText);
-    // console.log(textContent);
-
-    // 더보기 클릭 시 이벤트
-    moreText.addEventListener("click", () => {
-      moreText.style.display = "none";
-      lessText.style.display = "inline-block";
-      textContent.style.display = "inline-block";
-    });
-
-    // 줄이기 클릭 시 이벤트
-    lessText.addEventListener("click", () => {
-      moreText.style.display = "inline-block";
-      lessText.style.display = "none";
-      textContent.style.display = "-webkit-box";
-    });
-  });
-
-  /* 카드 클릭 했을 때 id alert 뜨기 */
+  /* 카드 클릭 했을 때, id alert 뜨기 */
   movieList.addEventListener("click", handleClickCard);
 
   function handleClickCard(event) {
@@ -70,7 +56,7 @@ export const movieCards = async () => {
     //   alert(`영화 id : ${target.parentNode.id}`);
     // }
     if (event.target.matches(".imgClass")) {
-      alert(`영화 id : ${event.target.parentNode.parentNode.dataset.id}`);
+      alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
       console.log(event.target.parentNode);
     }
   }
