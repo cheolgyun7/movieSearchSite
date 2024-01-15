@@ -45,9 +45,9 @@ window.onload = function detailPageOn() {
                       </div>
                       </div>
                       <div class="content_top">
-                          <p class="releaseDate">개봉일 : ${releaseDate}</p><br>
-                          <p class="genres">장르 : ${genre}</p><br>
-                          <p class="voteAverage">평점 : ${voteAverage}</p><br>
+                          <p class="releaseDate">개봉일 : ${releaseDate}</p>
+                          <p class="genres">장르 : ${genre}</p>
+                          <p class="voteAverage">평점 : ${voteAverage}</p>
                       </div>
                       <div class="content_bottom">
                           <p class="overview">${overview}</p><br>
