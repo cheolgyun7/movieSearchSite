@@ -22,12 +22,37 @@ window.onload = function detailPageOn() {
     .then((res) => res.json())
     .then((data) => {
       const title = data["title"];
+      let originalTitle = data["original_title"];
+
+      let pattern2 = /[a-zA-Z]/; //영어
+      // var pattern3 = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; //한글
+
+      // title명이 영어로 되어 있을 경우에는 originalTitle과 동일하기 때문에 아무것도 출력하지 않도록 함
+      if (pattern2.test(title)) {
+        originalTitle = "";
+      }
+
       const posterPath = data["poster_path"];
       const voteAverage = data["vote_average"];
       const releaseDate = data["release_date"];
-      const overview = data["overview"];
+      const year = releaseDate.slice(0, 4);
 
-      // 장르도 객체안에 있는 배열 값 추출해서 문자열로 합침
+      // runtime 분으로 데이터를 받아와서 시간, 분으로 나눠서 저장
+      let runtime = data["runtime"];
+      let hour = 0;
+      let minute = 0;
+      if (runtime >= 60) {
+        hour = Math.floor(runtime / 60);
+        minute = runtime % 60;
+      }
+
+      let overview = data["overview"];
+      // 불러온 데이터 값에서 overview의 줄거리 정보가 없는 경우
+      if (overview == "") {
+        overview = "줄거리 정보가 없습니다";
+      }
+
+      // 장르, 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
       const genres = data["genres"];
       const genreList = [];
       for (key in genres) {
@@ -41,16 +66,19 @@ window.onload = function detailPageOn() {
                      `;
       const temp_html2 = `
                       <div class="title">
-                              <h1 class="title_font">${title}</h1>
-                      </div>
+                        <h1 class="title_font">${title} (${year})</h1>
+                        <h4 class="engTitle_font">${originalTitle}</h4>
                       </div>
                       <div class="content_top">
-                          <p class="releaseDate">개봉일 : ${releaseDate}</p>
-                          <p class="genres">장르 : ${genre}</p>
-                          <p class="voteAverage">평점 : ${voteAverage}</p>
+                        <p class="releaseDate">🎬 개봉일 : ${releaseDate}</p>
+                        <p class="genres">🎮 장르 : ${genre}</p>
+                        <p class="runtime">🎧 런타임 : ${hour}시간 ${minute}분</p>
+                        <p class="voteAverage">⭐ 평점 : ${voteAverage}</p>
+                      </div>
+                      <div class = "cast"> 
                       </div>
                       <div class="content_bottom">
-                          <p class="overview">${overview}</p><br>
+                        <p class="overview">${overview}</p><br>
                       </div>
                  `;
       const temp_html3 = `
@@ -75,6 +103,39 @@ window.onload = function detailPageOn() {
       form.addEventListener("submit", (e) => rereview(e, movieId));
     });
 
+  // 출연진 정보 가져오기
+  let url1 = "https://api.themoviedb.org/3/movie/" + movieId + "/credits?language=ko-KR";
+  fetch(url1, options)
+    .then((res) => res.json())
+    .then((data) => {
+      // 출연진, 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
+      const casts = data["cast"];
+      const castList = [];
+      for (key in casts) {
+        castList.push(casts[key].name);
+      }
+      const cast = castList.join(", ");
+
+      // // 감독 정보 가져오기
+      // const crew = data["crew"];
+      // let arr = [];
+      // const index = 0;
+      // for (let i = 0; i < crew.length; i++) {
+      //   if (crew[i]["known_for_department"] == "Directing") {
+      //     arr.push(i);
+      //   }
+      //   index = arr[0];
+      // }
+      // const directer = crew[index]["name"];
+
+      // 받아온 데이터들을 html 파일에 붙이기
+      const temp_html = `
+                      <p class="castList">💁 출연진 : ${cast}</p><br>
+                     `;
+
+      document.querySelector(".cast").insertAdjacentHTML("beforeend", temp_html);
+    });
+
   const rereview = (e, movieId) => {
     e.preventDefault(); //기존 폼 제출 동작방지
     const existingReview = JSON.parse(localStorage.getItem(movieId)) || []; //기존리뷰를 가지고 오거나 빈배열을 초기화함
@@ -82,6 +143,10 @@ window.onload = function detailPageOn() {
     const reviewerInput = document.getElementById("reviewer").value;
     const reviewInput = document.getElementById("review").value;
     const pwdInput = document.getElementById("pwd").value;
+
+    // const buttonComment = document.getElementById("deleteBtn");
+    // const newComment = document.getElementById("newComment");
+    // const commentForm = document.getElementsByClassName("comment")[0];
 
     /**
      * 유효성검사 함수
@@ -182,6 +247,7 @@ window.onload = function detailPageOn() {
         reviewList(); //안써주면 reload를해야 확인이 가능함
       });
     };
+    deleteBtn;
   };
 
   reviewList();

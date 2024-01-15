@@ -3,9 +3,6 @@
 
 body {
   background-color: rgb(236, 232, 227);
-  /* background-image: url("../backgroundImage.jpg");
-  background-size: cover;
-  background-position: center; */
 }
 
 .top {
@@ -23,10 +20,11 @@ body {
 
 .line {
   width: 100%;
-  height: 70px;
+  height: 20px;
   background-color: #3066b8b9;
 }
 
+/* 포스터 이미지 구역 - 좌측 사이드 */
 .first {
   width: 40%;
   height: 80%;
@@ -34,7 +32,7 @@ body {
   margin: 20px 20px 20px 20px;
 }
 
-/* 포스터 이미지 */
+/* 포스터 이미지 세부 설정 */
 .posterImage {
   width: 80%;
 
@@ -45,22 +43,17 @@ body {
   background-color: #ffffff2d;
 }
 
+/* 정보 및 리뷰 구역 - 우측 사이드 */
 .second {
   width: 50%;
   text-align: center;
   margin: 20px 20px 20px 20px;
-
-  border-radius: 10px;
-  box-shadow: 1px 1px 20px gray;
-
-  padding: 20px 20px;
-  background-color: #ffffff2d;
 }
 
 /* 영화 제목 */
 .title {
-  height: 40px;
-  color: #3066b8;
+  height: 50px;
+  color: #204377;
   background-color: #ffffff2d;
 
   padding: 20px 20px;
@@ -74,10 +67,35 @@ body {
   font-size: xx-large;
   font-weight: bold;
   font-family: "Gowun Dodum", sans-serif;
+  line-height: 1.5;
+}
+
+.engTitle_font {
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+  color: #3066b8b7;
 }
 
 /* 개봉일 */
 .releaseDate {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 장르 */
+.genres {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: bold;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
+}
+
+/* 런타임 */
+.runtime {
   font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 
@@ -94,24 +112,33 @@ body {
   padding: 10px 20px;
 }
 
-.genres {
-  font-family: "Gowun Dodum", sans-serif;
-  font-weight: bold;
-
-  margin: auto auto 20px auto;
-  padding: 10px 20px;
-}
-
-/* 개봉일 + 장르 + 평점 */
+/* 개봉일 + 장르 + 런타임 + 평점 한줄로 표현 */
 .content_top {
   display: flex;
   color: black;
+}
+
+/* 출연진 리스트*/
+.castList {
+  font-family: "Gowun Dodum", sans-serif;
+
+  margin: auto auto 10px auto;
+  padding: 10px 20px;
+}
+
+/**/
+.direct {
+  font-family: "Gowun Dodum", sans-serif;
+
+  margin: auto auto 20px auto;
+  padding: 10px 20px;
 }
 
 /* 줄거리 */
 .overview {
   font-family: "Gowun Dodum", sans-serif;
   color: white;
+  line-height: 1.5;
 }
 
 /* 줄거리 */
@@ -123,6 +150,24 @@ body {
   border-radius: 10px;
 
   margin: auto auto 20px auto;
+}
+
+/*리뷰 타이틀 설정*/
+.revBox {
+  height: 50px;
+  width: 100px;
+  color: #204377;
+  background-color: #ffffff8a;
+
+  border-radius: 10px;
+  margin: 20px auto 20px 10px;
+}
+
+.reviewTitle {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+  line-height: 1.5;
 }
 
 /* 리뷰작성쪽 css */

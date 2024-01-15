@@ -1,6 +1,5 @@
-export const movieCards = async () => {
-  const movies = await fetchMovieData();
-
+export const movieCards = (movies) => {
+  // console.log(movies);
   /* 카드 리스트 */
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
@@ -35,36 +34,35 @@ export const movieCards = async () => {
       </div>
       <div class="cardsBottom">
         <h3 class="movieTitle">${movie.title}</h3>
-        <p>${movie.release_date} | ⭐️ : ${movie.vote_average}</p>
+        <p>${movie.release_date} | ⭐️ : <span class="voteAver">${movie.vote_average}</span></p>
       </div>
     </li>
-
-  
   `
     )
     .join("");
 
-  /* 카드 클릭 했을 때, id alert 뜨기 */
-  // movieList.addEventListener("click", handleClickCard);
+  /* 기본으로 영화 정렬하기 */
+  // const basiclistText = document.querySelector(".basicBtn");
+  // basiclistText.addEventListener("click", async () => {
+  //   await movieCards(movies);
+  // });
 
-  // function handleClickCard(event) {
-  //   // if (target === movieList) return;
-  //   // if (target === $(".linkBtn")) return;
+  /* 평점순으로 영화 정렬하기*/
+  // "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
+  let averageArray = Array.from(movies);
 
-  //   // if (target.matches(".movie-card")) {
-  //   //   alert(`영화 id : ${target.id}`);
-  //   // } else {
-  //   //   alert(`영화 id : ${target.parentNode.id}`);
-  //   // }
-  //   if (event.target.matches(".imgClass")) {
-  //     alert(`영화 id : ${event.target.parentNode.parentNode.parentNode.dataset.id}`);
-  //     console.log(event.target.parentNode);
-  //   }
-  // }
+  const movieAverageList = averageArray.sort((a, b) => {
+    return b.vote_average - a.vote_average;
+  });
+
+  const averagelistText = document.querySelector(".averageBtn");
+  averagelistText.addEventListener("click", async () => {
+    await movieCards(movieAverageList);
+  });
 };
 
 /* fetch로 open api 가져오기 */
-async function fetchMovieData() {
+export async function fetchMovieData() {
   const options = {
     method: "GET",
     headers: {

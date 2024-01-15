@@ -3,10 +3,7 @@
   --bg-card-color: #4a724a65;
 }
 
-body {
-  background-color: rgb(189, 120, 29);
-}
-
+/* header */
 header {
   text-align: center;
   margin: 10px auto 10px auto;
@@ -36,6 +33,30 @@ header {
   border-radius: 5px;
 }
 
+/* 카드 정렬하기 button */
+.sortBtn {
+  width: 150px;
+  height: 30px;
+
+  text-align: center;
+  margin: 10px 30px;
+  float: right;
+
+  font-weight: bold;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+.basicBtn {
+  border: 0;
+  background-color: transparent;
+}
+
+.averageBtn {
+  border: 0;
+  background-color: transparent;
+}
+
+/* ul 태그 flex 설정 */
 #movieList {
   display: flex;
   justify-content: space-around;
@@ -72,13 +93,23 @@ header {
   padding: 10px;
   filter: brightness(1);
   height: 425px;
-  transition: filter 0.3s ease;
 }
 
-.innerImg {
+.imgClass:hover {
+  filter: brightness(0.3);
+}
+
+.cardsTop .innerImg {
   position: absolute;
   top: 10%;
   opacity: 0;
+}
+
+.cardsTop:hover .innerImg {
+  opacity: 1;
+}
+
+.innerImg {
   width: 90%;
   display: flex;
   flex-direction: column;
