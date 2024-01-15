@@ -61,29 +61,23 @@ header {
   position: relative;
 }
 
+.cardsTop:hover .imgClass {
+  filter: brightness(0.3);
+}
+
 .imgClass {
   width: 100%;
   border-radius: 30px;
   padding: 10px;
   filter: brightness(1);
   height: 425px;
-}
-
-.imgClass:hover {
-  filter: brightness(0.3);
-}
-
-.cardsTop .innerImg {
-  position: absolute;
-  top: 10%;
-  opacity: 0;
-}
-
-.cardsTop:hover .innerImg {
-  opacity: 1;
+  transition: filter 0.3s ease;
 }
 
 .innerImg {
+  position: absolute;
+  top: 10%;
+  opacity: 0;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -91,6 +85,9 @@ header {
   justify-content: center;
 }
 
+.cardsTop:hover .innerImg {
+  opacity: 1;
+}
 .movieOverview {
   text-align: center;
   background-color: white;
