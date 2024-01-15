@@ -52,23 +52,26 @@ window.onload = function detailPageOn() {
                       <div class="content_bottom">
                           <p class="overview">${overview}</p><br>
                       </div>
-                      <div class="reviewBox">
+                 `;
+      const temp_html3 = `
+                  <div class="reviewBox">
                         <div class="writeBox">
                           <p>
-                            <input type="text" id="reviewer" placeholder="작성자명">
-                            <input type="text" id="pwd" placeholder="비밀번호">
+                            <label>작성자명</label>
+                            <input type="text" id="reviewer" placeholder="2글자이상(영,한)">
+                            <label>비밀번호</label>
+                            <input type="text" id="pwd" placeholder="4자리숫자">
                             <button id="saveButton">저장</button>
                           </p>
                           <textarea type="text" id="review" placeholder="리뷰작성"></textarea>
                         </div>
-                        <div class="readBox">
-
+                        <div>
                         </div>
                       </div>
-                 `;
-
+      `;
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
       document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html2);
+      document.querySelector("#reviewForm").insertAdjacentHTML("beforebegin", temp_html3);
       form.addEventListener("submit", (e) => rereview(e, movieId));
     });
 
@@ -130,12 +133,56 @@ window.onload = function detailPageOn() {
     const movieId = URLSearch.get("id");
     const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
 
+    reviewsContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <thead class="topTable">
+              <th></th>
+              <th>번호</th>
+              <th>작성자</th>
+              <th>리뷰</th>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+      `
+    );
+    const tbody = document.querySelector(".tbody"); // tbody 요소 생성
     existingReview.forEach((review, index) => {
-      reviewsContainer.insertAdjacentHTML(
+      tbody.insertAdjacentHTML(
         "beforeend",
-        `리뷰 ${index + 1}: ${review.reviewer} - ${review.review}<br />`
+        `
+        <tr>
+        <td class="reviewList">
+        <input type="checkbox" id="chkbox${index}" class="chkbox"/>
+        </td>
+        <td class="reviewList">${index + 1}</td>
+        <td class="reviewList">${review.reviewer}</td>
+        <td class="reviewList">${review.review}</td>
+        </tr>
+        `
       );
     });
+    const deleteBtn = document.querySelector(".deleteBtn");
+
+    //삭제버튼 클릭시 handlebutton함수로 이동
+    deleteBtn.addEventListener("click", () => {
+      handleSaveButton();
+    });
+
+    const handleSaveButton = () => {
+      const chkboxes = document.querySelectorAll(".chkbox");
+      chkboxes.forEach((chk) => {
+        if (chk.checked) {
+          const selectTr = chk.closest("tr");
+          const rowIndex = selectTr.rowIndex; //테이블에서 해당열의 index값을 구하는 rowIndex
+          const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+          existingReview.splice(rowIndex, 1); // rowIndex는 1부터 시작하므로 1을 빼줌(왜인지는모르겠네요)
+          localStorage.setItem(movieId, JSON.stringify(existingReview));
+        }
+        reviewList(); //안써주면 reload를해야 확인이 가능함
+      });
+    };
   };
+
   reviewList();
 };

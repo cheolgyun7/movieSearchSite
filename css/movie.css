@@ -1,43 +1,25 @@
-/* 메인페이지 CSS */
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
-
-/* color */
 :root {
   --bg-background-color: rgb(236, 232, 227);
   --bg-card-color: #4a724a65;
-  --bg-point-color: #3066b8b9;
 }
 
-/* body */
 body {
-  background-color: rgb(236, 232, 227);
+  background-color: rgb(189, 120, 29);
 }
 
-/* header */
 header {
   text-align: center;
   margin: 10px auto 10px auto;
+  width: 100px;
 }
 
 .logo {
   width: 80px;
 }
 
-/* 검색 form */
 #search-form {
-  width: 100%;
-  height: 70px;
-
-  background-color: #3066b8b9;
-  display: flex;
-  justify-content: center;
-
-  align-items: center;
-
-  font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
+  background-color: var(--bg-card-color);
 }
-
 .searchDiv {
   display: flex;
   justify-content: center;
@@ -48,14 +30,12 @@ header {
   padding: 10px;
   height: 70px;
 }
-
 .searchDiv input {
   margin: 0 10px;
   width: 300px;
   border-radius: 5px;
 }
 
-/* ul 태그 flex 설정 */
 #movieList {
   display: flex;
   justify-content: space-around;
@@ -64,41 +44,32 @@ header {
   /* background-color: aquamarine; */
 }
 
-/* 카드 세부 CSS */
 .movie-card {
   width: 300px;
   padding: 10px auto;
-
+  background-color: var(--bg-card-color);
   border-radius: 30px;
   list-style-type: none;
-  box-shadow: 1px 1px 20px gray;
-  background-color: #ffffff2d;
-  margin: 15px auto;
+  box-shadow: 1px 1px 20px #ddd;
+  margin: 10px auto;
 }
 
-/* 카드 상단 이미지/줄거리 */
 .cardsTop {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-
-  font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
 }
 
 .cardsTop:hover .imgClass {
   filter: brightness(0.3);
 }
 
-/* 영화 포스터 */
 .imgClass {
   width: 100%;
-  height: 425px;
   border-radius: 30px;
   padding: 10px;
-
   filter: brightness(1);
   height: 425px;
   transition: filter 0.3s ease;
@@ -109,7 +80,6 @@ header {
   top: 10%;
   opacity: 0;
   width: 90%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,7 +106,6 @@ header {
 .movieOverview > p {
   width: 90%;
   margin: 5px auto;
-
   /*줄거리 줄 수 제한*/
   overflow: hidden;
   text-overflow: ellipsis;
@@ -146,7 +115,6 @@ header {
   word-wrap: break-word;
 }
 
-/* 포스터 내부 - 버튼 */
 .movePageBtn {
   display: flex;
   flex-direction: column;
@@ -160,11 +128,7 @@ header {
   cursor: pointer;
 }
 
-/* 카드 하단 제목 및 세부사항 */
 .cardsBottom {
   padding: 10px;
   text-align: center;
-
-  font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
 }
