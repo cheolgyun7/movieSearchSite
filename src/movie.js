@@ -1,6 +1,6 @@
 let movies = [];
 export const movieCards = (movies) => {
-  console.log(movies);
+  // console.log(movies);
   /* 카드 리스트 */
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
