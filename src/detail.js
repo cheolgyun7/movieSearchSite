@@ -80,16 +80,26 @@ window.onload = function detailPageOn() {
                       <div class="content_bottom">
                         <p class="overview">${overview}</p><br>
                       </div>
-                      <div>
-                        <input type="text" id="reviewer" placeholder="작성자명">
-                        <input type="text" id="review" placeholder="리뷰작성">
-                        <input type="text" id="pwd" placeholder="비밀번호">
-                        <button id="saveButton">저장</button>
-                      </div>
                  `;
-
+      const temp_html3 = `
+                  <div class="reviewBox">
+                        <div class="writeBox">
+                          <p>
+                            <label>작성자명</label>
+                            <input type="text" id="reviewer" placeholder="2글자이상(영,한)">
+                            <label>비밀번호</label>
+                            <input type="password" id="pwd" maxlength="4" placeholder="4자리숫자">
+                            <button id="saveButton">저장</button>
+                          </p>
+                          <textarea type="text" id="review" placeholder="리뷰작성"></textarea>
+                        </div>
+                        <div>
+                        </div>
+                      </div>
+      `;
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
       document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html2);
+      document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html3);
       form.addEventListener("submit", (e) => rereview(e, movieId));
     });
 
@@ -153,11 +163,6 @@ window.onload = function detailPageOn() {
     const reviewerInput = document.getElementById("reviewer").value;
     const reviewInput = document.getElementById("review").value;
     const pwdInput = document.getElementById("pwd").value;
-
-    // const buttonComment = document.getElementById("deleteBtn");
-    // const newComment = document.getElementById("newComment");
-    // const commentForm = document.getElementsByClassName("comment")[0];
-
     /**
      * 유효성검사 함수
      */
@@ -191,7 +196,6 @@ window.onload = function detailPageOn() {
       pwd: document.getElementById("pwd").value
     };
     //기존배열에 새 배열을 push함
-
     existingReview.push(newReview);
     localStorage.setItem(movieId, JSON.stringify(existingReview));
     reviewList();
@@ -208,13 +212,75 @@ window.onload = function detailPageOn() {
     const movieId = URLSearch.get("id");
     const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
 
+    reviewsContainer.insertAdjacentHTML(
+      "beforeend",
+      `
+      <colgroup>
+      <col width="10%" />
+      <col width="10%" />
+      <col width="20%" />
+      <col width="60%" />
+      </colgroup>
+      <thead class="topTable">
+              <th></th>
+              <th>번호</th>
+              <th>작성자</th>
+              <th>리뷰</th>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+      `
+    );
+    const tbody = document.querySelector(".tbody"); // tbody 요소 생성
     existingReview.forEach((review, index) => {
-      reviewsContainer.insertAdjacentHTML(
+      tbody.insertAdjacentHTML(
         "beforeend",
-        `리뷰 ${index + 1}: ${review.reviewer} - ${review.review}<br />`
+        `
+        <tr>
+        <td class="reviewList">
+        <input type="checkbox" id="chkbox${index}" class="chkbox"/>
+        </td>
+        <td class="reviewList">${index + 1}</td>
+        <td class="reviewList">${review.reviewer}</td>
+        <td class="reviewList">${review.review}</td>
+        </tr>
+        `
       );
     });
     //deleteBtn;
   };
+
+  const deleteBtn = document.getElementById("deleteBtn");
+  //삭제버튼 클릭시 handlebutton함수로 이동
+  deleteBtn.addEventListener("click", () => {
+    handleSaveButton();
+  });
+  const handleSaveButton = () => {
+    let enteredPwd = prompt("삭제하려면 비밀번호를 입력하세요");
+    const movieId = URLSearch.get("id");
+    const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+    let matchingIndex = -1;
+
+    // 입력된 비밀번호와 일치하는 리뷰 찾는거
+    existingReview.forEach((review, index) => {
+      if (review.pwd === enteredPwd) {
+        matchingIndex = index;
+      }
+    });
+    if (matchingIndex !== -1) {
+      //-1로 설정하는이유는 비밀번호가 일치않는다는걸 인식시키기 위함이라고 한다.
+      // 일치하는 비밀번호가 있다면 해당 리뷰 삭제
+      existingReview.splice(matchingIndex, 1);
+      // 수정된 리뷰 목록으로 localStorage 업데이트를 한다
+      localStorage.setItem(movieId, JSON.stringify(existingReview));
+      reviewList();
+    } else {
+      alert("비밀번호가 일치하지 않습니다");
+      return;
+    }
+  };
+
+  deleteBtn;
+
   reviewList();
 };
