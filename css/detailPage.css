@@ -116,14 +116,12 @@ body {
 
 /* 출연진 리스트*/
 .castList {
-  width: 80%;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
 
-/**/
+/* 감독 */
 .direct {
-  width: 200px;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }

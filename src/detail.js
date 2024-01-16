@@ -1,5 +1,5 @@
 // 파일이 열림과 동시에 실행, api 호출
-window.onload = function detailPageOn() {
+window.onload = async function detailPageOn() {
   const options = {
     method: "GET",
     headers: {
@@ -18,7 +18,7 @@ window.onload = function detailPageOn() {
   let movieId = id;
 
   let url = "https://api.themoviedb.org/3/movie/" + movieId + "?language=ko-KR";
-  fetch(url, options)
+  await fetch(url, options)
     .then((res) => res.json())
     .then((data) => {
       const title = data["title"];
@@ -105,7 +105,7 @@ window.onload = function detailPageOn() {
 
   // 출연진 정보 가져오기
   let url1 = "https://api.themoviedb.org/3/movie/" + movieId + "/credits?language=ko-KR";
-  fetch(url1, options)
+  await fetch(url1, options)
     .then((res) => res.json())
     .then((data) => {
       // 출연진, 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
@@ -126,7 +126,7 @@ window.onload = function detailPageOn() {
 
   // 감독 정보 가져오기
   let url2 = "https://api.themoviedb.org/3/movie/" + movieId + "/credits?language=ko-KR";
-  fetch(url2, options)
+  await fetch(url2, options)
     .then((res) => res.json())
     .then((data) => {
       const crews = data["crew"];
@@ -134,7 +134,6 @@ window.onload = function detailPageOn() {
       for (key in crews) {
         crewList.push(crews[key].department);
       }
-      console.log("감독정보 잘불러와지는지 확인" + crewList);
 
       let directIdx = 0;
       let arr = [];
