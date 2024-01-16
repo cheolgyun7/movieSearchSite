@@ -49,7 +49,7 @@ window.onload = function detailPageOn() {
       let overview = data["overview"];
       // 불러온 데이터 값에서 overview의 줄거리 정보가 없는 경우
       if (overview == "") {
-        overview = "줄거리 정보가 없습니다";
+        overview = "줄거리 정보가 없습니다.";
       }
 
       // 장르, 객체안에 있는 배열 값 모두 추출해서 문자열로 합침
@@ -157,7 +157,7 @@ window.onload = function detailPageOn() {
     }
     // 2.리뷰 유효성 검사 함수
     if (!reviewInput.trim()) {
-      alert("리뷰를 작성하세요");
+      alert("리뷰를 작성하세요.");
       return;
     }
     // 3.비밀번호 유효성 검사 함수
@@ -166,7 +166,7 @@ window.onload = function detailPageOn() {
       return /^\d{4}$/.test(pwd);
     }
     if (!validatePwd(pwdInput)) {
-      alert("비밀번호 4자리를입력하세요(숫자)");
+      alert("비밀번호 4자리를입력하세요(숫자).");
       return;
     }
     const newReview = {
