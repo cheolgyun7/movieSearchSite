@@ -121,7 +121,6 @@ body {
 /* 출연진 리스트*/
 .castList {
   font-family: "Gowun Dodum", sans-serif;
-  width: 80%;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
@@ -129,7 +128,6 @@ body {
 /**/
 .direct {
   font-family: "Gowun Dodum", sans-serif;
-  width: 200px;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
