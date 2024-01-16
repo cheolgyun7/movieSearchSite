@@ -88,7 +88,7 @@ window.onload = function detailPageOn() {
                             <label>작성자명</label>
                             <input type="text" id="reviewer" placeholder="2글자이상(영,한)">
                             <label>비밀번호</label>
-                            <input type="text" id="pwd" placeholder="4자리숫자">
+                            <input type="password" id="pwd" maxlength="4" placeholder="4자리숫자">
                             <button id="saveButton">저장</button>
                           </p>
                           <textarea type="text" id="review" placeholder="리뷰작성"></textarea>
@@ -99,7 +99,7 @@ window.onload = function detailPageOn() {
       `;
       document.querySelector("#firstPage").insertAdjacentHTML("beforeend", temp_html1);
       document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html2);
-      document.querySelector("#reviewForm").insertAdjacentHTML("beforebegin", temp_html3);
+      document.querySelector(".detailMovie").insertAdjacentHTML("beforeend", temp_html3);
       form.addEventListener("submit", (e) => rereview(e, movieId));
     });
 
@@ -143,11 +143,6 @@ window.onload = function detailPageOn() {
     const reviewerInput = document.getElementById("reviewer").value;
     const reviewInput = document.getElementById("review").value;
     const pwdInput = document.getElementById("pwd").value;
-
-    // const buttonComment = document.getElementById("deleteBtn");
-    // const newComment = document.getElementById("newComment");
-    // const commentForm = document.getElementsByClassName("comment")[0];
-
     /**
      * 유효성검사 함수
      */
@@ -181,7 +176,6 @@ window.onload = function detailPageOn() {
       pwd: document.getElementById("pwd").value
     };
     //기존배열에 새 배열을 push함
-
     existingReview.push(newReview);
     localStorage.setItem(movieId, JSON.stringify(existingReview));
     reviewList();
@@ -201,6 +195,12 @@ window.onload = function detailPageOn() {
     reviewsContainer.insertAdjacentHTML(
       "beforeend",
       `
+      <colgroup>
+      <col width="10%" />
+      <col width="10%" />
+      <col width="20%" />
+      <col width="60%" />
+      </colgroup>
       <thead class="topTable">
               <th></th>
               <th>번호</th>
@@ -227,28 +227,39 @@ window.onload = function detailPageOn() {
         `
       );
     });
-    const deleteBtn = document.querySelector(".deleteBtn");
-
-    //삭제버튼 클릭시 handlebutton함수로 이동
-    deleteBtn.addEventListener("click", () => {
-      handleSaveButton();
-    });
-
-    const handleSaveButton = () => {
-      const chkboxes = document.querySelectorAll(".chkbox");
-      chkboxes.forEach((chk) => {
-        if (chk.checked) {
-          const selectTr = chk.closest("tr");
-          const rowIndex = selectTr.rowIndex; //테이블에서 해당열의 index값을 구하는 rowIndex
-          const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
-          existingReview.splice(rowIndex, 1); // rowIndex는 1부터 시작하므로 1을 빼줌(왜인지는모르겠네요)
-          localStorage.setItem(movieId, JSON.stringify(existingReview));
-        }
-        reviewList(); //안써주면 reload를해야 확인이 가능함
-      });
-    };
-    deleteBtn;
   };
+
+  const deleteBtn = document.getElementById("deleteBtn");
+  //삭제버튼 클릭시 handlebutton함수로 이동
+  deleteBtn.addEventListener("click", () => {
+    handleSaveButton();
+  });
+  const handleSaveButton = () => {
+    let enteredPwd = prompt("삭제하려면 비밀번호를 입력하세요");
+    const movieId = URLSearch.get("id");
+    const existingReview = JSON.parse(localStorage.getItem(movieId)) || [];
+    let matchingIndex = -1;
+
+    // 입력된 비밀번호와 일치하는 리뷰 찾는거
+    existingReview.forEach((review, index) => {
+      if (review.pwd === enteredPwd) {
+        matchingIndex = index;
+      }
+    });
+    if (matchingIndex !== -1) {
+      //-1로 설정하는이유는 비밀번호가 일치않는다는걸 인식시키기 위함이라고 한다.
+      // 일치하는 비밀번호가 있다면 해당 리뷰 삭제
+      existingReview.splice(matchingIndex, 1);
+      // 수정된 리뷰 목록으로 localStorage 업데이트를 한다
+      localStorage.setItem(movieId, JSON.stringify(existingReview));
+      reviewList();
+    } else {
+      alert("비밀번호가 일치하지 않습니다");
+      return;
+    }
+  };
+
+  deleteBtn;
 
   reviewList();
 };
