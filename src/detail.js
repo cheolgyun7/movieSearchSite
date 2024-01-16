@@ -75,8 +75,8 @@ window.onload = function detailPageOn() {
                         <p class="runtime">🎧 런타임 : ${hour}시간 ${minute}분</p>
                         <p class="voteAverage">⭐ 평점 : ${voteAverage}</p>
                       </div>
-                      <div class = "cast"> 
-                      </div>
+                      <div class = "crew"></div>
+                      <div class = "cast"></div>
                       <div class="content_bottom">
                         <p class="overview">${overview}</p><br>
                       </div>
@@ -116,24 +116,44 @@ window.onload = function detailPageOn() {
       }
       const cast = castList.join(", ");
 
-      // // 감독 정보 가져오기
-      // const crew = data["crew"];
-      // let arr = [];
-      // const index = 0;
-      // for (let i = 0; i < crew.length; i++) {
-      //   if (crew[i]["known_for_department"] == "Directing") {
-      //     arr.push(i);
-      //   }
-      //   index = arr[0];
-      // }
-      // const directer = crew[index]["name"];
-
       // 받아온 데이터들을 html 파일에 붙이기
       const temp_html = `
                       <p class="castList">💁 출연진 : ${cast}</p><br>
                      `;
 
       document.querySelector(".cast").insertAdjacentHTML("beforeend", temp_html);
+    });
+
+  // 감독 정보 가져오기
+  let url2 = "https://api.themoviedb.org/3/movie/" + movieId + "/credits?language=ko-KR";
+  fetch(url2, options)
+    .then((res) => res.json())
+    .then((data) => {
+      const crews = data["crew"];
+      const crewList = [];
+      for (key in crews) {
+        crewList.push(crews[key].department);
+      }
+      console.log("감독정보 잘불러와지는지 확인" + crewList);
+
+      let directIdx = 0;
+      let arr = [];
+      for (let i = 0; i < crews.length; i++) {
+        if (crews[i]["department"] == "Directing") {
+          directIdx = i;
+          arr.push(i);
+        }
+      }
+
+      const directer = crews[arr[0]]["name"];
+      console.log(directer);
+
+      // 받아온 데이터들을 html 파일에 붙이기
+      const temp_html = `
+                      <p class="direct">💁‍♂️ 감독 : ${directer}</p><br>
+                     `;
+
+      document.querySelector(".crew").insertAdjacentHTML("beforeend", temp_html);
     });
 
   const rereview = (e, movieId) => {
@@ -227,6 +247,7 @@ window.onload = function detailPageOn() {
         `
       );
     });
+    //deleteBtn;
   };
 
   const deleteBtn = document.getElementById("deleteBtn");

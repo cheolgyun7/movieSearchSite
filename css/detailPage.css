@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Myeongjo&display=swap");
 
 body {
-  background-color: rgb(236, 232, 227);
+  background-color: rgb(245, 242, 238); /*rgb(236, 232, 227)*/
 }
 
 .top {
@@ -20,7 +20,7 @@ body {
 
 .line {
   width: 100%;
-  height: 20px;
+  height: 30px;
   background-color: #3066b8b9;
 }
 
@@ -121,16 +121,16 @@ body {
 /* 출연진 리스트*/
 .castList {
   font-family: "Gowun Dodum", sans-serif;
-
-  margin: auto auto 10px auto;
+  width: 80%;
+  margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
 
 /**/
 .direct {
   font-family: "Gowun Dodum", sans-serif;
-
-  margin: auto auto 20px auto;
+  width: 200px;
+  margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
 
