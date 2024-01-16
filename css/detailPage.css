@@ -66,19 +66,18 @@ body {
 .title_font {
   font-size: xx-large;
   font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
+
   line-height: 1.5;
 }
 
 .engTitle_font {
   font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
+
   color: #3066b8b7;
 }
 
 /* 개봉일 */
 .releaseDate {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 
   margin: auto auto 20px auto;
@@ -87,7 +86,6 @@ body {
 
 /* 장르 */
 .genres {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 
   margin: auto auto 20px auto;
@@ -96,7 +94,6 @@ body {
 
 /* 런타임 */
 .runtime {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 
   margin: auto auto 20px auto;
@@ -105,7 +102,6 @@ body {
 
 /* 평점 */
 .voteAverage {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 
   margin: auto auto 20px auto;
@@ -120,21 +116,18 @@ body {
 
 /* 출연진 리스트*/
 .castList {
-  font-family: "Gowun Dodum", sans-serif;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
 
-/**/
+/* 감독 */
 .direct {
-  font-family: "Gowun Dodum", sans-serif;
   margin: auto auto 10px 10px;
   padding: 10px 20px;
 }
 
 /* 줄거리 */
 .overview {
-  font-family: "Gowun Dodum", sans-serif;
   color: white;
   line-height: 1.5;
 }
@@ -166,7 +159,7 @@ body {
 .reviewTitle {
   font-size: xx-large;
   font-weight: bold;
-  font-family: "Gowun Dodum", sans-serif;
+
   line-height: 1.5;
 }
 
@@ -212,7 +205,6 @@ body {
   padding: 20px;
 }
 table {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 }
 table th {
@@ -234,7 +226,6 @@ table tbody tr {
   border-right: 0;
 }
 .reviewBox {
-  font-family: "Gowun Dodum", sans-serif;
   font-weight: bold;
 }
 /* 리뷰작성쪽 css */
