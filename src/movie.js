@@ -44,7 +44,7 @@ export const movieCards = (movies) => {
 };
 
 /* 기본으로 영화 정렬하기 */
-// "기본순" 버튼 클릭 시, 기본 배열대로 영화 정렬하기
+// "기본순" 버튼 클릭 시 기본 배열대로 영화 정렬하기
 const basiclistText = document.querySelector(".basicBtn");
 basiclistText.addEventListener("click", () => {
   movieCards(movies);
