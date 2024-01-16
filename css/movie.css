@@ -48,14 +48,20 @@ header {
   margin: 0 10px;
   width: 300px;
   border-radius: 5px;
+  border-color: transparent;
 }
 
 /* 카드 정렬하기 button */
 .sortBtn {
-  width: 150px;
+  width: 200px;
   height: 30px;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+
   margin: 10px 30px;
   float: right;
 
@@ -136,17 +142,16 @@ header {
 
 .innerImg {
   width: 90%;
-
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 }
 
-.cardsTop:hover .innerImg {
-  opacity: 1;
-}
-
+/* 포스터 내부 - 줄거리 */
 .movieOverview {
   text-align: center;
   background-color: white;
@@ -154,6 +159,9 @@ header {
   border-radius: 30px;
   width: 90%;
   margin: 10px;
+
+  position: absolute;
+  top: 0;
 }
 
 .movieOverview > h4 {
@@ -179,6 +187,9 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: absolute;
+  bottom: 0;
 }
 
 #pageBtn {

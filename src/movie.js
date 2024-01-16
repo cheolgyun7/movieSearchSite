@@ -1,5 +1,6 @@
+let movies = [];
 export const movieCards = (movies) => {
-  // console.log(movies);
+  console.log(movies);
   /* 카드 리스트 */
   const movieList = document.querySelector("#movieList");
   movieList.innerHTML = movies
@@ -19,7 +20,7 @@ export const movieCards = (movies) => {
             <h4>영화 소개</h4>
             <p>${movie.overview}</p>
           </div>
-          <div class="movePageBtn">
+          <div class="movePageBtn"> 
             <a href="/index2.html?id=${movie.id}">
               <button
                 id="pageBtn"
@@ -40,26 +41,27 @@ export const movieCards = (movies) => {
   `
     )
     .join("");
+};
 
-  /* 기본으로 영화 정렬하기 */
-  // const basiclistText = document.querySelector(".basicBtn");
-  // basiclistText.addEventListener("click", async () => {
-  //   await movieCards(movies);
-  // });
+/* 기본으로 영화 정렬하기 */
+// "기본순" 버튼 클릭 시, 기본 배열대로 영화 정렬하기
+const basiclistText = document.querySelector(".basicBtn");
+basiclistText.addEventListener("click", () => {
+  movieCards(movies);
+});
 
-  /* 평점순으로 영화 정렬하기*/
-  // "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
+/* 평점순으로 영화 정렬하기*/
+// "평점순" 버튼 클릭 시, 아래 배열대로 영화 정렬하기
+const averageListText = document.querySelector(".averageBtn");
+averageListText.addEventListener("click", () => {
   let averageArray = Array.from(movies);
 
   const movieAverageList = averageArray.sort((a, b) => {
     return b.vote_average - a.vote_average;
   });
 
-  const averagelistText = document.querySelector(".averageBtn");
-  averagelistText.addEventListener("click", async () => {
-    await movieCards(movieAverageList);
-  });
-};
+  movieCards(movieAverageList);
+});
 
 /* fetch로 open api 가져오기 */
 export async function fetchMovieData() {
@@ -73,5 +75,6 @@ export async function fetchMovieData() {
   };
   const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=ko-KR", options);
   const data = await response.json();
+  movies = data.results;
   return data.results;
 }
