@@ -137,15 +137,15 @@ window.onload = function detailPageOn() {
       console.log("감독정보 잘불러와지는지 확인" + crewList);
 
       let directIdx = 0;
+      let arr = [];
       for (let i = 0; i < crews.length; i++) {
         if (crews[i]["department"] == "Directing") {
-          console.log("해당하는애만 출력" + crews[i]["name"]);
-          directIdx += i;
-          console.log(directIdx);
+          directIdx = i;
+          arr.push(i);
         }
       }
 
-      const directer = crews[directIdx]["name"];
+      const directer = crews[arr[0]]["name"];
       console.log(directer);
 
       // 받아온 데이터들을 html 파일에 붙이기
